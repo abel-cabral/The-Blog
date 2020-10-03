@@ -19,7 +19,7 @@
                             <label class="control-label requerido" for="senha">Senha*</label>
                             <input type="password" class="form-control" name="senha" id="senha" placeholder="Digite a senha">
                         </div>
-                        <p></p>
+                        <a href="./register.jsp">Criar Conta</a>
                         <div class="form-group">
                             <button type="submit" class="btn btn-outline-dark mr-2">Entrar</button>
                         </div>
