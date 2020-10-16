@@ -2,6 +2,7 @@
 <html lang="pt-br">
     <head>
         <jsp:include page="cabecalho.html" />
+        <link rel="stylesheet" href="./index.css">
     </head>
     <body>
         <div class="container">
@@ -21,5 +22,5 @@
             <% }%>
         </div>
     </body>
-    <jsp:include page="scripts_basicos.html" />
+    <jsp:include page="scripts_basicos.html" />     
 </html>
