@@ -1,5 +1,13 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$.validator.messages.required = "Este campo é obrigatório";
+$("#formCadastro").validate({
+    debug: true,
+    rules: {},
+    messages: {        
+        email: {
+            required: "Informe um email válido"
+        },
+        nome: {
+            required: "Nome completo é obrigatório"
+        }
+    }
+});
