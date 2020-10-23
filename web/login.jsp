@@ -16,7 +16,7 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
-                                                <i class="fa fa-user-circle-o"></i>
+                                                <i class="fa fa-address-card"></i>
                                             </div>
                                         </div>                                     
                                         <input type="text" name="cpf" id="cpf" class="form-control cpf" placeholder="Digite o CPF" maxlength="14" data-mask="000.000.000-00" autocomplete="off" required="true">

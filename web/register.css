@@ -7,11 +7,21 @@ and open the template in the editor.
     Created on : 02/10/2020, 21:57:20
     Author     : Abel Cabral Arruda
 */
-label.error {
-    color: red;
-    font-size: small;
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
 }
 
-.form-group {
-    margin-bottom: 0;
+.container {
+    background-color: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+h1 {
+    text-align: center;
 }
