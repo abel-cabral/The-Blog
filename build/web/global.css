@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22/10/2020, 21:01:23
+    Author     : Abel Cabral Arruda
+*/
+
+body {
+    background-size: cover;    
+    background-image: url("assets/images/background.jpg");
+    background-repeat: no-repeat;
+}
+
+.container {
+    background-color: white;
+    border: 1px solid grey;
+    -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+/* VALIDATION */
+label.error {
+    color: red;
+    font-size: small;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
