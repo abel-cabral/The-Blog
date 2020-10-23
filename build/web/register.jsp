@@ -83,12 +83,11 @@
                                 </select>   
                                 <label class="error" for="papel"></label>
                             </div>
-                        </div> 
-                        <div class="form-group row">
-                            <div class="offset-1 col-12">
-                                <button name="submit" type="submit" class="btn btn-primary">Submit</button>
-                            </div>
                         </div>
+                        <a href="./login.jsp">Possui uma conta?</a>
+                        <div class="form-group mb-2">
+                            <button type="submit" class="btn btn-outline-dark mr-2">Cadastrar</button>
+                        </div>                        
                     </form>
                 </div>
             </div>

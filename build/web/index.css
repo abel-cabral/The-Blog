@@ -8,18 +8,3 @@ and open the template in the editor.
     Author     : Abel Cabral Arruda
 */
 
-body {
-    background-size: cover;    
-    background-image: url("assets/images/background.jpg");
-    background-repeat: no-repeat;
-}
-
-.container {
-    background-color: white;
-    border: 1px solid grey;
-    -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         7px 7px 5px 0px rgba(50, 50, 50, 0.75);
-}
-
-

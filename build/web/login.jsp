@@ -2,27 +2,47 @@
 <html lang="pt-br">
     <head>
         <jsp:include page="cabecalho.html" />
+        <link rel="stylesheet" href="./login.css">        
     </head>
-    <body>
-        <div class="container">
-            <jsp:include page="menu_principal.html" />
-            <link rel="stylesheet" href="./login.css">        
-            <div class="row mb-3 mt-5">
-                <div class="col-4 offset-4 card bg-ligth">
-                    <form id="formLogin" action="" method="POST">
-                        <div class="form-group mt-2">           
-                            <label class="control-label requerido" for="cpf">CPF*</label>
-                            <input type="text" name="cpf" id="cpf" class="form-control cpf" placeholder="Digite o cpf" maxlength="14" data-mask="000.000.000-00" autocomplete="off" required="true">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label requerido" for="senha">Senha*</label>
-                            <input type="password" class="form-control" name="senha" id="senha" placeholder="Digite a senha" autocomplete="off" required="true">
-                        </div>
-                        <a href="./register.jsp">Criar Conta</a>
-                        <div class="form-group mb-2">
-                            <button type="submit" class="btn btn-outline-dark mr-2">Entrar</button>
-                        </div>
-                    </form>
+    <body class="h-100">        
+        <div class="vertical-center">
+            <div class="container">                
+                <div class="row mb-3 mt-5">
+                    <div class="col-4 offset-4 card bg-ligth">
+                        <h1>THE BLOG</h1>
+                        <form id="formLogin" method="post" action="" class="mb-3 mt-3">
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fa fa-user-circle-o"></i>
+                                            </div>
+                                        </div>                                     
+                                        <input type="text" name="cpf" id="cpf" class="form-control cpf" placeholder="Digite o CPF" maxlength="14" data-mask="000.000.000-00" autocomplete="off" required="true">
+                                    </div>
+                                    <label class="error" for="cpf"></label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fa fa-envelope"></i>
+                                            </div>
+                                        </div>                                     
+                                        <input type="password" class="form-control" name="senha" id="senha" placeholder="Digite a senha" autocomplete="off" required="true">
+                                    </div>
+                                    <label class="error" for="senha"></label>
+                                </div>
+                            </div>                                           
+                            <a href="./register.jsp">Criar Conta</a>
+                            <div class="form-group mb-2">
+                                <button type="submit" class="btn btn-outline-dark mr-2">Entrar</button>
+                            </div>                        
+                        </form>                        
+                    </div>
                 </div>
             </div>
         </div>
