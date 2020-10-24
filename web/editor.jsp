@@ -18,10 +18,20 @@
         <div class="container">
             <jsp:include page="menu_principal.html" />            
             <section>
-                <h1>THE BLOG EDITOR</h1>
-                <form method="post">
+                <div class="jumbotron">
+                    <h1 class="display-4">Tela de Criação de Postagem</h1>            
+                    <hr class="my-4">
+                    <p>Escreva sua postagem aqui</p>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <form method="post">
                     <textarea id="summernote" name="editordata"></textarea>
+                    <div class="">
+                        <button class="btn btn-dark btn-md mt-2 mb-3">Publicar</button>
+                    </div>
                 </form>
+                    </div>
             </section>
         </div>
     </body>

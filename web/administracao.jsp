@@ -14,15 +14,15 @@
         <jsp:include page="./cabecalho.html" />
         <link rel="stylesheet" href="./administracao.css">       
     </head>
-    <body>        
-        <div class="container-fluid">
-            <jsp:include page="./menu_principal.html" />
-            <div class="jumbotron">
-                <h1 class="display-4">Tela de Administração</h1>            
-                <hr class="my-4">
-                <p>Lista de Usuários do Sistema</p>
-            </div>
-            <div class="container">
+    <body>
+        <div class="container">
+            <jsp:include page="menu_principal.html" />            
+            <section>
+                <div class="jumbotron">
+                    <h1 class="display-4">Tela de Administração</h1>            
+                    <hr class="my-4">
+                    <p>Lista de Usuários do Sistema</p>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <table class="table table-bordered">
@@ -52,8 +52,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>            
+            </section>
         </div>
         <jsp:include page="./scripts_basicos.html"/>
         <script src="./administracao.js"></script>
