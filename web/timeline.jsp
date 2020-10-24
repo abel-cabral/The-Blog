@@ -8,8 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
-        <title>Timeline</title>
         <jsp:include page="./cabecalho.html"/>
         <link rel="stylesheet" href="./timeline.css">  
     </head>

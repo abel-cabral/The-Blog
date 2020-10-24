@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <title>Register</title>
         <jsp:include page="./cabecalho.html" />
         <link rel="stylesheet" href="./register.css">        
@@ -19,7 +18,7 @@
                 <div class="row mb-3 mt-5">
                     <div class="col-4 offset-4 card bg-ligth">
                         <h1>THE BLOG</h1>
-                        <form id="formCadastro" method="post" action="" class="mb-3 mt-3">
+                        <form id="formCadastro" method="post" action="./formCadastro" class="mb-3 mt-3">
                             <div class="form-group row">
                                 <div class="col-12">
                                     <div class="input-group">

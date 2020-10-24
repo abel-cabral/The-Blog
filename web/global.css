@@ -17,6 +17,7 @@ body {
 .container {
     background-color: white;
     border: 1px solid grey;
+    border-top: none;
     -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
     -moz-box-shadow:    7px 7px 5px 0px rgba(50, 50, 50, 0.75);
     box-shadow:         7px 7px 5px 0px rgba(50, 50, 50, 0.75);
@@ -30,4 +31,9 @@ label.error {
 
 .form-group {
     margin-bottom: 0;
+}
+
+// JUMBOTRON
+.jumbotron {
+    border-radius: 0 0 .3rem .3rem;
 }

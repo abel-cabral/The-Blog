@@ -1,6 +1,6 @@
 $.validator.messages.required = "Este campo é obrigatório";
 $("#formCadastro").validate({
-    debug: true,
+    // debug: true,
     rules: {},
     messages: {        
         email: {
