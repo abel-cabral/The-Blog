@@ -5,7 +5,7 @@
  */
 
 $("#formLogin").validate({
-    debug: true,
+    // debug: true,
     rules: {},
     messages: {
         cpf: {

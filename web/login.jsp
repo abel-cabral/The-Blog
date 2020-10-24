@@ -10,7 +10,7 @@
                 <div class="row mb-3 mt-5">
                     <div class="col-4 offset-4 card bg-ligth">
                         <h1>THE BLOG</h1>
-                        <form id="formLogin" method="post" action="" class="mb-3 mt-3">
+                        <form id="formLogin" method="GET" action="./index.jsp" class="mb-3 mt-3">
                             <div class="form-group row">
                                 <div class="col-12">
                                     <div class="input-group">
