@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
     <head>
         <jsp:include page="cabecalho.html" />
         <link rel="stylesheet" href="./login.css">        

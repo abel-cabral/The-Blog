@@ -5,10 +5,15 @@
         <group>
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/editor.jsp</file>
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/menu_principal.html</file>
+            <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/administracao.jsp</file>
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/index.css</file>
-            <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/editor.js</file>
+            <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/cabecalho.html</file>
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/index.jsp</file>
+            <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/login.jsp</file>
+            <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/scripts_basicos.html</file>
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/timeline.jsp</file>
+            <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/register.js</file>
+            <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/register.jsp</file>
         </group>
     </open-files>
 </project-private>
