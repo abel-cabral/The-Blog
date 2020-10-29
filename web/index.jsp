@@ -22,7 +22,7 @@
                                 <h5 class="card-title">Article Title <% out.println(i); %></h5>
                                 <p class="card-text">Here we going to add a short description about the article.</p>
                                 <div class="float-right">
-                                    <a href="./article.jsp" class="btn btn-primary">Continue reading</a>
+                                    <a href="./artigo.jsp" class="btn btn-primary">Continue reading</a>
                                 </div>                    
                                 <p class="card-text"><small class="text-muted"><b>Author:</b> Author Name</small></p>
                             </div>

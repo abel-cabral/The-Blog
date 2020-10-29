@@ -25,4 +25,17 @@ $('#summernote').summernote({
         ]
     }
 });
+$.validator.messages.required = "Este campo é obrigatório";
+$("#formNoticia").validate({
+    // debug: true,
+    rules: {},
+    messages: {        
+        titulo: {
+            required: "Informe o título da notícia"
+        },
+        editordata: {
+            required: "Escreva pelo menos 140 caracteres"
+        }
+    }
+});
 

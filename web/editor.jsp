@@ -23,8 +23,12 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <form method="post">
+                        <form method="post" id="formNoticia">
+                            <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite o Título" maxlength="20" autocomplete="off" required="true">
+                            <label class="error" for="titulo"></label>
+                            <br/>
                             <textarea id="summernote" name="editordata"></textarea>
+                            <label class="error" for="editordata"></label>
                             <div class="">
                                 <button class="btn btn-dark btn-md mt-2 mb-3">Publicar</button>
                             </div>
