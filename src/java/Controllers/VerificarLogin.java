@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import Model.UsuarioDAO;
 import Aplicacao.Usuario;
+import Model.Conexao;
 
 @WebServlet(name = "VerificarLogin", urlPatterns = {"/VerificarLogin"})
 public class VerificarLogin extends HttpServlet {
@@ -21,21 +22,18 @@ public class VerificarLogin extends HttpServlet {
         String cpf_user = request.getParameter("cpf");
         String senha_user = request.getParameter("senha");
 
-        UsuarioDAO usuariodao = new UsuarioDAO();
         
+        UsuarioDAO usuariodao = new UsuarioDAO();        
         Usuario usuario = usuariodao.getUsuarioPorLoginSenha(cpf_user, senha_user);
         
-        if (usuario.getId() !=0){
-            
+        if (usuario.getId() != 0){            
             HttpSession session = request.getSession();
-            session.setAttribute("NomeUsuarioLogado", "admin");
+            session.setAttribute("NomeUsuarioLogado", usuario.getNome());
             session.setAttribute("logado", "ok");
 
-            RequestDispatcher resposta = request.getRequestDispatcher("sucesso.jsp");
-            resposta.forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/sucesso.jsp");            
         } else {
-            response.sendRedirect("erro_login.html");
-        }
+            response.sendRedirect(request.getContextPath() + "/erro_login.jsp");            
+        }               
     }
-
 }

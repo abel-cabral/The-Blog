@@ -2,11 +2,22 @@ package Aplicacao;
 
 public class Usuario {
     private int id;
+    private int papel;
     private String nome;
-    private String cpf;
+    private String email;
     private String senha;
-    private String tipo;
-    private String aprovado;
+    private String cpf;    
+    private String cadastro_aprovado;
+
+    public Usuario(int id, int papel, String nome, String email, String senha, String cpf, String cadastro_aprovado) {
+        this.id = id;
+        this.papel = papel;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.cpf = cpf;
+        this.cadastro_aprovado = cadastro_aprovado;
+    }
 
     public int getId() {
         return id;
@@ -14,6 +25,14 @@ public class Usuario {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPapel() {
+        return papel;
+    }
+
+    public void setPapel(int papel) {
+        this.papel = papel;
     }
 
     public String getNome() {
@@ -24,12 +43,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
@@ -40,21 +59,19 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public String getAprovado() {
-        return aprovado;
+    public String getCadastro_aprovado() {
+        return cadastro_aprovado;
     }
 
-    public void setAprovado(String aprovado) {
-        this.aprovado = aprovado;
+    public void setCadastro_aprovado(String cadastro_aprovado) {
+        this.cadastro_aprovado = cadastro_aprovado;
     }
-    
-    
 }
