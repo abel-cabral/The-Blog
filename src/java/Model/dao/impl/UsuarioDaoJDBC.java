@@ -148,10 +148,7 @@ public class UsuarioDaoJDBC implements UsuarioDao {
         
         PreparedStatement st = null;
         ResultSet rs = null;
-        try {
-            System.out.println("-----------------------------------------------------------");
-            System.out.println(conn.getClientInfo());            
-            System.out.println("-----------------------------------------------------------");
+        try {            
             st = conn.prepareStatement("SELECT * FROM usuario WHERE cpf=? and senha=? limit 1");
             st.setString(1, cpf);
             st.setString(2, senha);

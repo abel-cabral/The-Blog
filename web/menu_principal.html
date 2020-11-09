@@ -18,6 +18,15 @@
             </li>
         </ul>
         <a class="nav-link" href="login.jsp">Login</a>
+        <form name="logout" action="VerificarLogin" method="get">
+            <a class="nav-link" onclick="callservlet()" href="#">Logout</a>
+        </form>
     </div>
 </nav>
+<script>
+    function callservlet() {
+        //do your processing.
+        document.getElementsByName('logout')[0].submit();
+    }
+</script>
 

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import Model.dao.DaoFactory;
 import Model.dao.UsuarioDao;
 import Model.entities.Usuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "VerificarLogin", urlPatterns = {"/VerificarLogin"})
 public class VerificarLogin extends HttpServlet {
@@ -22,16 +24,27 @@ public class VerificarLogin extends HttpServlet {
         String senha_user = request.getParameter("senha");
 
         Usuario usuario = usuarioDao.doLogin(cpf_user, senha_user);
-        System.out.println(usuario.toString());
         if (usuario.getId() != 0) {
+            // Cria uma sessao
             HttpSession session = request.getSession();
             session.setAttribute("NomeUsuarioLogado", usuario.getNome());
-            session.setAttribute("logado", "ok");
+            session.setAttribute("logado", "true");
 
             response.sendRedirect(request.getContextPath() + "/sucesso.jsp");
         } else {
             response.sendRedirect(request.getContextPath() + "/erro_login.jsp");
         }
     }
-
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession(false);
+        session.setAttribute("logado", "false");
+        session.invalidate();
+        try {
+            response.sendRedirect(request.getContextPath() + "/");
+        } catch (IOException ex) {
+            Logger.getLogger(VerificarLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
