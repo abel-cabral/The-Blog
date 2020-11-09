@@ -9,4 +9,5 @@ public interface UsuarioDao {
     Usuario doLogin(String cpf, String senha);    
     Usuario findById(Integer client);    
     List<Usuario> findAll();
+    List<Usuario> findAll(Integer id);  // Excepto o ID informado
 }

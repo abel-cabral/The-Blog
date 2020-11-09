@@ -9,12 +9,9 @@ import javax.servlet.http.HttpSession;
 import Model.dao.DaoFactory;
 import Model.dao.UsuarioDao;
 import Model.entities.Usuario;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @WebServlet(name = "VerificarLogin", urlPatterns = {"/VerificarLogin"})
 public class VerificarLogin extends HttpServlet {
-
     UsuarioDao usuarioDao = DaoFactory.createUsuarioDao();
 
     @Override
@@ -32,6 +29,7 @@ public class VerificarLogin extends HttpServlet {
             session.setAttribute("NomeUsuarioLogado", Name[0]);
             
             session.setAttribute("papel", usuario.getPapel().toString());
+            session.setAttribute("id", usuario.getId().toString());
             session.setAttribute("logado", "true");            
 
             response.sendRedirect(request.getContextPath() + "/");
@@ -41,14 +39,10 @@ public class VerificarLogin extends HttpServlet {
     }
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
         session.setAttribute("logado", "false");
-        session.invalidate();
-        try {
-            response.sendRedirect(request.getContextPath() + "/");
-        } catch (IOException ex) {
-            Logger.getLogger(VerificarLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        response.sendRedirect(request.getContextPath() + "/");
+        session.invalidate();        
     }
 }

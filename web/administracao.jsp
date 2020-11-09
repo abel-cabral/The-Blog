@@ -3,8 +3,9 @@
     Created on : 08/10/2020, 18:35:34
     Author     : Abel Cabral Arruda
 --%>
-
+<jsp:include page="/Administracao" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>        
@@ -34,18 +35,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach var="usuario" items="${usuarios}">
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Cristina Sabrina Almeida</td>
-                                    <td>csalmeida@gmail.com</td>
-                                    <td>Comentárista</td>
-                                    <td>Pendente</td>                                        
+                                    <th scope="row">${usuario.id}</th>
+                                    <td>${usuario.nome}</td>
+                                    <td>${usuario.email}</td>
+                                    <td>${usuario.papel}</td>
+                                    <td>${usuario.cadastro_aprovado}</td>                                        
                                     <td>
                                         <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Aprovar"><i class="fa fa-check"></i></button>
                                         <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Suspender"><i class="fa fa-exclamation-circle"></i></button>                                        
                                         <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-times-circle"></i></button>
                                     </td>
-                                </tr>                                    
+                                </tr>                 
+                                </tr>
+                            </c:forEach>                                               
                             </tbody>
                         </table>
                     </div>

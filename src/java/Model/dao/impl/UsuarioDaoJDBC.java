@@ -117,15 +117,19 @@ public class UsuarioDaoJDBC implements UsuarioDao {
     }
 
     @Override
-    public List<Usuario> findAll() {
+    public List<Usuario> findAll(Integer id) {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-            st = conn.prepareStatement("SELECT * FROM usuario");
+            /*
+            st = conn.prepareStatement("SELECT * FROM usuario where id NOT IN (select id from usuario where id=?)");
+            st.setInt(1, id);
+            */
+            st = conn.prepareStatement("SELECT * FROM usuario");            
             rs = st.executeQuery();
 
             if (rs.next()) {
-                List<Usuario> user = new ArrayList<Usuario>();
+                List<Usuario> user = new ArrayList<>();
                 do {
                     Usuario dep = instantiateUsuario(rs);
                     user.add(dep);
@@ -140,6 +144,12 @@ public class UsuarioDaoJDBC implements UsuarioDao {
             DB.closeStatement(st);
             DB.closeResultSet(rs);
         }
+    }
+    
+    @Override
+    public List<Usuario> findAll() {
+        // Como nao existe ID 0, ele sempre irá retornar todos os usuários
+        return this.findAll(0);
     }
 
     @Override
