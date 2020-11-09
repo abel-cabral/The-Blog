@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="container">
-            <jsp:include page="menu_principal.html" />            
+            <jsp:include page="menu_principal.jsp" />            
             <section>
                 <div class="jumbotron">
                     <h1 class="display-4">Tela de Postagens</h1>            

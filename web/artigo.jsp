@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="container">
-            <jsp:include page="menu_principal.html" />            
+            <jsp:include page="menu_principal.jsp" />            
             <section>
                 <h1 class="display-4">Título da Notícia</h1>
                 <div class="row">
