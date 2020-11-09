@@ -10,17 +10,23 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class DB {
-
     private static Connection conn = null;
-
+    
     // Inicia/referencia uma conexao com o BD
-    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+    public static Connection getConnection() throws ClassNotFoundException {
         Properties props = new Properties();
         props.setProperty("user", "root");
-        props.setProperty("password", "");
+        props.setProperty("password", "root");
         String url = "localhost:3306/blog";
         Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/blog", "root", "");
+        try {
+            conn = DriverManager.getConnection(url, props);
+        } catch (SQLException ex) {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
         return conn;
     }
 
@@ -32,7 +38,6 @@ public class DB {
             } catch (SQLException e) {
                 throw new DbException(e.getMessage());
             }
-
         }
     }
 
