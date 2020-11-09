@@ -15,12 +15,14 @@ public class DB {
     // Inicia/referencia uma conexao com o BD
     public static Connection getConnection() throws ClassNotFoundException {
         Properties props = new Properties();
-        props.setProperty("user", "root");
-        props.setProperty("password", "root");
-        String url = "localhost:3306/blog";
-        Class.forName("com.mysql.jdbc.Driver");
+        props.put("user", "root");
+        props.put("password", "root");
+        String url = "jdbc:mysql://localhost:3306/blog";
         try {
+            // load and register JDBC driver for MySQL
+            Class.forName("com.mysql.jdbc.Driver"); 
             conn = DriverManager.getConnection(url, props);
+            System.out.println("Successfully connected to MySQL database " +  url);
         } catch (SQLException ex) {
             // handle any errors
             System.out.println("SQLException: " + ex.getMessage());

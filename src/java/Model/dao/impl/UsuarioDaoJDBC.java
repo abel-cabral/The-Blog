@@ -144,11 +144,14 @@ public class UsuarioDaoJDBC implements UsuarioDao {
 
     @Override
     public Usuario doLogin(String cpf, String senha) {
-        Usuario user = new Usuario(1, 1, cpf, cpf, cpf, cpf, cpf);
-        /*
+        Usuario user = null;
+        
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
+            System.out.println("-----------------------------------------------------------");
+            System.out.println(conn.getClientInfo());            
+            System.out.println("-----------------------------------------------------------");
             st = conn.prepareStatement("SELECT * FROM usuario WHERE cpf=? and senha=? limit 1");
             st.setString(1, cpf);
             st.setString(2, senha);
@@ -156,17 +159,14 @@ public class UsuarioDaoJDBC implements UsuarioDao {
 
             // rs inicia no 0 da tabela, precisamos antes de avançar testar se nao é null
             if (rs.next()) {
-                Usuario dep = instantiateUsuario(rs);
-                return dep;
+                user = instantiateUsuario(rs);
             }
-            return null;
-
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         } finally {
             DB.closeStatement(st);
             DB.closeResultSet(rs);
-        }*/
+        }
         return user;
     }
 
