@@ -43,9 +43,13 @@
                                     <td>${usuario.papel}</td>
                                     <td>${usuario.cadastro_aprovado}</td>                                        
                                     <td>
-                                        <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Aprovar"><i class="fa fa-check"></i></button>
-                                        <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Suspender"><i class="fa fa-exclamation-circle"></i></button>                                        
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-times-circle"></i></button>
+                                        <c:if test="${usuario.cadastro_aprovado eq 'N'}">
+                                            <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Aprovar"><i class="fa fa-check"></i></button>
+                                        </c:if>
+                                        <c:if test="${usuario.cadastro_aprovado eq 'S'}">
+                                            <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Suspender"><i class="fa fa-exclamation-circle"></i></button>   
+                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-times-circle"></i></button>
+                                        </c:if>
                                     </td>
                                 </tr>                 
                                 </tr>

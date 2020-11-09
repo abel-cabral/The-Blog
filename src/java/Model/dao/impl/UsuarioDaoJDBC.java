@@ -120,12 +120,9 @@ public class UsuarioDaoJDBC implements UsuarioDao {
     public List<Usuario> findAll(Integer id) {
         PreparedStatement st = null;
         ResultSet rs = null;
-        try {
-            /*
+        try {            
             st = conn.prepareStatement("SELECT * FROM usuario where id NOT IN (select id from usuario where id=?)");
-            st.setInt(1, id);
-            */
-            st = conn.prepareStatement("SELECT * FROM usuario");            
+            st.setInt(1, id);            
             rs = st.executeQuery();
 
             if (rs.next()) {
