@@ -17,3 +17,7 @@ h4 {
     vertical-align: middle;
   }
 }
+
+form {
+    display: inline-block!important;
+}

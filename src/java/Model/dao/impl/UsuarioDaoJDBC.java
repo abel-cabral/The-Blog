@@ -64,6 +64,7 @@ public class UsuarioDaoJDBC implements UsuarioDao {
             st.setString(4, obj.getSenha());
             st.setInt(5, obj.getPapel());
             st.setString(6, obj.getCadastro_aprovado());
+            st.setInt(7, obj.getId());
             st.executeUpdate();
 
         } catch (SQLException e) {

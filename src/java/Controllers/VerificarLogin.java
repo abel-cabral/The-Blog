@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import Model.dao.DaoFactory;
 import Model.dao.UsuarioDao;
 import Model.entities.Usuario;
+import javax.servlet.ServletException;
 
 @WebServlet(name = "VerificarLogin", urlPatterns = {"/VerificarLogin"})
 public class VerificarLogin extends HttpServlet {

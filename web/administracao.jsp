@@ -35,25 +35,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="usuario" items="${usuarios}">
-                                <tr>
-                                    <th scope="row">${usuario.id}</th>
-                                    <td>${usuario.nome}</td>
-                                    <td>${usuario.email}</td>
-                                    <td>${usuario.papel}</td>
-                                    <td>${usuario.cadastro_aprovado}</td>                                        
-                                    <td>
-                                        <c:if test="${usuario.cadastro_aprovado eq 'N'}">
-                                            <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Aprovar"><i class="fa fa-check"></i></button>
-                                        </c:if>
-                                        <c:if test="${usuario.cadastro_aprovado eq 'S'}">
-                                            <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Suspender"><i class="fa fa-exclamation-circle"></i></button>   
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-times-circle"></i></button>
-                                        </c:if>
-                                    </td>
-                                </tr>                 
-                                </tr>
-                            </c:forEach>                                               
+                                <c:forEach var="usuario" items="${usuarios}">
+                                    <tr>
+                                        <th scope="row">${usuario.id}</th>
+                                        <td>${usuario.nome}</td>
+                                        <td>${usuario.email}</td>
+                                        <td>${usuario.papel}</td>
+                                        <td>${usuario.cadastro_aprovado}</td>                                        
+                                        <td>
+                                            <c:if test="${usuario.cadastro_aprovado eq 'N'}">
+                                                <form name="updateUsuario1" action="Administracao" method="POST">
+                                                    <input type="hidden" name="id" value="${usuario.id}">
+                                                    <input type="hidden" name="cadastro_aprovado" value="S">
+                                                    <input type="hidden" name="tipo" value="update">
+                                                    <button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Aprovar"><i class="fa fa-check"></i></button>
+                                                </form>
+                                            </c:if>
+                                            <c:if test="${usuario.cadastro_aprovado eq 'S'}">
+                                                <form name="updateUsuario2" action="Administracao" method="POST">
+                                                    <input type="hidden" name="id" value="${usuario.id}">
+                                                    <input type="hidden" name="cadastro_aprovado" value="N">
+                                                    <input type="hidden" name="tipo" value="update">
+                                                    <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Suspender"><i class="fa fa-exclamation-circle"></i></button>   
+                                                </form>
+                                                <form name="deleteUsuario" action="Administracao" method="POST">
+                                                    <input type="hidden" name="id" value="${usuario.id}">
+                                                    <input type="hidden" name="tipo" value="delete">
+                                                    <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-times-circle"></i></button>
+                                                </form>
+                                            </c:if>
+                                        </td>
+                                    </tr>                 
+                                    </tr>
+                                </c:forEach>                                               
                             </tbody>
                         </table>
                     </div>

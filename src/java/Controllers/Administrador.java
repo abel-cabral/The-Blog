@@ -32,8 +32,28 @@ public class Administrador extends HttpServlet {
             System.out.println(e.getMessage());
         }
         List<Usuario> usuarios = usuarioDao.findAll(id);
-        System.out.println("Acessou a pagina de controle do adm");
         request.setAttribute("usuarios", usuarios);
         response.sendRedirect(request.getContextPath() + "/administracao.jsp");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String RequisicaoTipo = request.getParameter("tipo");
+        try {
+            Integer id = Integer.parseInt(request.getParameter("id"));
+            String cadastro_aprovado = request.getParameter("cadastro_aprovado");
+            Usuario usuario = usuarioDao.findById(id);
+            if (RequisicaoTipo.equals("update")) {
+                usuario.setCadastro_aprovado(cadastro_aprovado);
+                usuarioDao.update(usuario);
+            } else if (RequisicaoTipo.equals("delete")) {
+                // Faço isso para garantir que ao deletar existe o id
+                usuarioDao.deleteById(usuario.getId());
+            }
+            response.sendRedirect(request.getContextPath() + "/administracao.jsp");
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
