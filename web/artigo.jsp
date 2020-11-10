@@ -1,9 +1,3 @@
-<%-- 
-    Document   : timeline
-    Created on : Oct 8, 2020, 7:31:41 PM
-    Author     : genu
---%>
-
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>

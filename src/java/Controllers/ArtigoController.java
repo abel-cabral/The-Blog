@@ -2,18 +2,23 @@ package Controllers;
 
 import Model.dao.DaoFactory;
 import Model.dao.ArtigoDao;
+import Model.dao.UsuarioDao;
 import Model.entities.Artigo;
+import Model.entities.Usuario;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ArtigoController", urlPatterns = {"/ArtigoController"})
 public class ArtigoController extends HttpServlet {
 
     ArtigoDao artigoDao = DaoFactory.createArtigoDao();
+    UsuarioDao usuarioDao = DaoFactory.createUsuarioDao();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,5 +59,13 @@ public class ArtigoController extends HttpServlet {
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        List<Artigo> artigos = artigoDao.findAll();
+        // Usuario autor = usuarioDao.findById();
+        request.setAttribute("artigos", artigos);
     }
 }

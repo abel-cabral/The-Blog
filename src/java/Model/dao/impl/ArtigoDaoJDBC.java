@@ -121,8 +121,15 @@ public class ArtigoDaoJDBC implements ArtigoDao {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-            st = conn.prepareStatement("SELECT * FROM artigo where id_usuario=?");
-            st.setInt(1, id);
+            // Se id zero, pega todos os artigos do db
+            if(id == 0) {
+               st = conn.prepareStatement("SELECT * FROM artigo"); 
+            } else {
+               // Se id direfente de zero, pega só artigos do autor com aquele id 
+               st = conn.prepareStatement("SELECT * FROM artigo where id_usuario=?");
+               st.setInt(1, id);
+            }            
+            
             rs = st.executeQuery();
 
             if (rs.next()) {
