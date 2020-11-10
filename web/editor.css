@@ -7,4 +7,6 @@ and open the template in the editor.
     Created on : 24/10/2020, 18:40:13
     Author     : Abel Cabral Arruda
 */
-
+#categoria {
+    text-transform: capitalize;
+}

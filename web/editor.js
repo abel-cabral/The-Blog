@@ -33,6 +33,9 @@ $("#formNoticia").validate({
         titulo: {
             required: "Informe o título da notícia"
         },
+        categoria: {
+            required: "Selecione uma categoria"
+        },
         editordata: {
             required: "Escreva pelo menos 140 caracteres"
         }

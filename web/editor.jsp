@@ -1,10 +1,6 @@
-<%-- 
-    Document   : editor.jsp
-    Created on : 24/10/2020, 18:39:56
-    Author     : Abel Cabral Arruda
---%>
-
+<jsp:include page="/Publicacao" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>        
@@ -14,7 +10,7 @@
     </head>
     <body>
         <div class="container">
-            <jsp:include page="menu_principal.jsp" />            
+            <jsp:include page="menu_principal.jsp" />
             <section>
                 <div class="jumbotron">
                     <h1 class="display-4">Tela de Publicação</h1>            
@@ -23,12 +19,26 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <form method="post" id="formNoticia">
-                            <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite o Título" maxlength="20" autocomplete="off" required="true">
-                            <label class="error" for="titulo"></label>
+                        <form method="POST" id="formNoticia">
+                            <div>
+                                <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite o Título" maxlength="20" autocomplete="off" required="true">
+                                <label class="error" for="titulo"></label>
+                            </div>
+                            <div>
+                                <select id="categoria" name="categoria" class="custom-select" aria-describedby="categoriaHelpBlock" required="required">
+                                    <option value="" disabled="" selected="">Categoria da Notícia</option>
+                                    <c:forEach var="categoria" items="${categorias}">                                        
+                                        <option value="${categoria.id}">${categoria.descricao}</option>                                    
+                                    </c:forEach>      
+                                    
+                                </select>                                
+                                <label class="error" for="categoria"></label>
+                            </div>                            
                             <br/>
-                            <textarea id="summernote" name="editordata"></textarea>
-                            <label class="error" for="editordata"></label>
+                            <div>
+                                <textarea id="summernote" name="editordata"></textarea>
+                                <label class="error" for="editordata"></label>
+                            </div>
                             <div class="">
                                 <button class="btn btn-dark btn-md mt-2 mb-3">Publicar</button>
                             </div>

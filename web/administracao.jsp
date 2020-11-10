@@ -1,8 +1,3 @@
-<%-- 
-    Document   : administracao.jsp
-    Created on : 08/10/2020, 18:35:34
-    Author     : Abel Cabral Arruda
---%>
 <jsp:include page="/Administracao" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
