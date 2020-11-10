@@ -1,6 +1,10 @@
 package Model.dao.impl;
 
-
+import Model.dao.ArtigoDao;
+import Model.entities.Artigo;
+import Model.entities.Usuario;
+import db.DB;
+import db.DbException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,29 +12,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import db.DB;
-import db.DbException;
-import Model.dao.UsuarioDao;
-import Model.entities.Usuario;
 
-public class UsuarioDaoJDBC implements UsuarioDao {
+public class ArtigoDaoJDBC implements ArtigoDao {
+
     private final Connection conn;
 
-    public UsuarioDaoJDBC(Connection conn) {
+    public ArtigoDaoJDBC(Connection conn) {
         this.conn = conn;
     }
 
     @Override
-    public void insert(Usuario obj) {
+    public void insert(Artigo obj) {
         PreparedStatement st = null;
         try {
-            st = conn.prepareStatement("INSERT INTO usuario (nome, email, cpf, senha, papel, cadastro_aprovado) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-            st.setString(1, obj.getNome());
-            st.setString(2, obj.getEmail());
-            st.setString(3, obj.getCpf());
-            st.setString(4, obj.getSenha());
-            st.setInt(5, obj.getPapel());
-            st.setString(6, obj.getCadastro_aprovado());
+            st = conn.prepareStatement("INSERT INTO artigo (id_usuario, id_categoria, titulo, conteudo, liberar, aprovado) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            st.setInt(1, obj.getId_usuario());
+            st.setInt(2, obj.getId_categoria());
+            st.setString(3, obj.getTitulo());
+            st.setString(4, obj.getConteudo());
+            st.setString(5, obj.getLiberar());
+            st.setString(6, obj.getAprovado());
             int RowsAffected = st.executeUpdate();
 
             // Test para saber se houve inserçao
@@ -53,17 +54,16 @@ public class UsuarioDaoJDBC implements UsuarioDao {
     }
 
     @Override
-    public void update(Usuario obj) {
+    public void update(Artigo obj) {
         PreparedStatement st = null;
         try {
-            st = conn.prepareStatement("UPDATE usuario SET nome=?, email=?, cpf=?, senha=?, papel=?, cadastro_aprovado=? WHERE id = ?");
-            st.setString(1, obj.getNome());
-            st.setString(2, obj.getEmail());
-            st.setString(3, obj.getCpf());
-            st.setString(4, obj.getSenha());
-            st.setInt(5, obj.getPapel());
-            st.setString(6, obj.getCadastro_aprovado());
-            st.setInt(7, obj.getId());
+            st = conn.prepareStatement("UPDATE artigo SET id_categoria=?, titulo=?, conteudo=?, liberar=?, aprovado=? WHERE id=?");
+            st.setInt(1, obj.getId_categoria());
+            st.setString(2, obj.getTitulo());
+            st.setString(3, obj.getConteudo());
+            st.setString(4, obj.getLiberar());
+            st.setString(5, obj.getAprovado());
+            st.setInt(6, obj.getId());
             st.executeUpdate();
 
         } catch (SQLException e) {
@@ -77,7 +77,7 @@ public class UsuarioDaoJDBC implements UsuarioDao {
     public void deleteById(Integer id) {
         PreparedStatement st = null;
         try {
-            st = conn.prepareStatement("DELETE FROM usuario WHERE id = ?");
+            st = conn.prepareStatement("DELETE FROM artigo WHERE id=?");
             st.setInt(1, id);
             int rowsAffected = st.executeUpdate();
 
@@ -93,17 +93,17 @@ public class UsuarioDaoJDBC implements UsuarioDao {
     }
 
     @Override
-    public Usuario findById(Integer id) {
+    public Artigo findById(Integer id) {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-            st = conn.prepareStatement("SELECT * FROM usuario WHERE id = ?");
+            st = conn.prepareStatement("SELECT * FROM artigo WHERE id = ?");
             st.setInt(1, id);
             rs = st.executeQuery();
 
             // rs inicia no 0 da tabela, precisamos antes de avançar testar se nao é null
             if (rs.next()) {
-                Usuario dep = instantiateUsuario(rs);
+                Artigo dep = instantiateArtigo(rs);
                 return dep;
             }
             return null;
@@ -117,21 +117,21 @@ public class UsuarioDaoJDBC implements UsuarioDao {
     }
 
     @Override
-    public List<Usuario> findAll(Integer id) {
+    public List<Artigo> findAll(Integer id) {
         PreparedStatement st = null;
         ResultSet rs = null;
-        try {            
-            st = conn.prepareStatement("SELECT * FROM usuario where id NOT IN (select id from usuario where id=?)");
-            st.setInt(1, id);            
+        try {
+            st = conn.prepareStatement("SELECT * FROM artigo where id_usuario=?");
+            st.setInt(1, id);
             rs = st.executeQuery();
 
             if (rs.next()) {
-                List<Usuario> user = new ArrayList<>();
+                List<Artigo> artigos = new ArrayList<>();
                 do {
-                    Usuario dep = instantiateUsuario(rs);
-                    user.add(dep);
+                    Artigo dep = instantiateArtigo(rs);
+                    artigos.add(dep);
                 } while (rs.next());
-                return user;
+                return artigos;
             }
             return null;
 
@@ -142,41 +142,17 @@ public class UsuarioDaoJDBC implements UsuarioDao {
             DB.closeResultSet(rs);
         }
     }
-    
+
     @Override
-    public List<Usuario> findAll() {
+    public List<Artigo> findAll() {
         // Como nao existe ID 0, ele sempre irá retornar todos os usuários
         return this.findAll(0);
     }
 
-    @Override
-    public Usuario doLogin(String cpf, String senha) {
-        Usuario user = null;
-        
-        PreparedStatement st = null;
-        ResultSet rs = null;
-        try {            
-            st = conn.prepareStatement("SELECT * FROM usuario WHERE cpf=? and senha=? limit 1");
-            st.setString(1, cpf);
-            st.setString(2, senha);
-            rs = st.executeQuery();
-
-            // rs inicia no 0 da tabela, precisamos antes de avançar testar se nao é null
-            if (rs.next()) {
-                user = instantiateUsuario(rs);
-            }
-        } catch (SQLException e) {
-            throw new DbException(e.getMessage());
-        } finally {
-            DB.closeStatement(st);
-            DB.closeResultSet(rs);
-        }
-        return user;
-    }
-
     // Ao inves de montar manualmente em cada funcao, reutilizamos;    
-    private Usuario instantiateUsuario(ResultSet rs) throws SQLException {
-        Usuario dep = new Usuario(rs.getInt("id"), rs.getInt("papel"), rs.getString("nome"), rs.getString("email"), rs.getString("senha"), rs.getString("cpf"), rs.getString("cadastro_aprovado"));
+    private Artigo instantiateArtigo(ResultSet rs) throws SQLException {
+        Artigo dep = new Artigo(rs.getInt("id"), rs.getInt("id_usuario"), rs.getInt("id_categoria"), rs.getString("titulo"), rs.getString("conteudo"), rs.getString("liberar"), rs.getString("aprovado"));
         return dep;
     }
+
 }

@@ -29,7 +29,7 @@ public class CategoriaDaoJDBC implements CategoriaDao {
 
             // rs inicia no 0 da tabela, precisamos antes de avançar testar se nao é null
             if (rs.next()) {
-                Categoria dep = instantiateUsuario(rs);
+                Categoria dep = instantiateCategoria(rs);
                 return dep;
             }
             return null;
@@ -53,7 +53,7 @@ public class CategoriaDaoJDBC implements CategoriaDao {
             if (rs.next()) {
                 List<Categoria> categoria = new ArrayList<>();
                 do {
-                    Categoria dep = instantiateUsuario(rs);
+                    Categoria dep = instantiateCategoria(rs);
                     categoria.add(dep);
                 } while (rs.next());
                 return categoria;
@@ -69,7 +69,7 @@ public class CategoriaDaoJDBC implements CategoriaDao {
     }
     
     // Ao inves de montar manualmente em cada funcao, reutilizamos;    
-    private Categoria instantiateUsuario(ResultSet rs) throws SQLException {
+    private Categoria instantiateCategoria(ResultSet rs) throws SQLException {
         Categoria dep = new Categoria(rs.getInt("id"), rs.getString("descricao"));
         return dep;
     }
