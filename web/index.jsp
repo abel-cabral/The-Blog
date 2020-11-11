@@ -34,7 +34,7 @@
                                     <h5 class="card-title">${artigo.titulo}</h5>
                                     <div class="card-text show-summary">${artigo.conteudo}</div>
                                     <div class="float-right">                                        
-                                        <a href="./artigo.jsp" class="btn btn-primary">Continue lendo</a>
+                                        <a href="artigo.jsp?id=${artigo.id}" class="btn btn-primary" id="lerMais">Continue lendo</a>
                                     </div>                    
                                     <p class="card-text"><small class="text-muted"><b>Author:</b> Author Name</small></p>
                                 </div>

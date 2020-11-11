@@ -4,7 +4,6 @@ import Model.dao.DaoFactory;
 import Model.dao.ArtigoDao;
 import Model.dao.UsuarioDao;
 import Model.entities.Artigo;
-import Model.entities.Usuario;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -12,7 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 @WebServlet(name = "ArtigoController", urlPatterns = {"/ArtigoController"})
 public class ArtigoController extends HttpServlet {
@@ -22,7 +21,7 @@ public class ArtigoController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {            
+        try {
             String RequisicaoTipo = request.getParameter("tipo");
             Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
             Integer id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
@@ -60,12 +59,25 @@ public class ArtigoController extends HttpServlet {
             System.out.println(e.getMessage());
         }
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        List<Artigo> artigos = artigoDao.findAll();
-        // Usuario autor = usuarioDao.findById();
-        request.setAttribute("artigos", artigos);
+        try {
+            String id = request.getParameter("id");
+            if (id != null) {     
+                Integer aux = Integer.parseInt(request.getParameter("id"));
+                Artigo artigo = artigoDao.findById(aux);
+                System.out.println(artigo.getTitulo());
+                System.out.println(artigo.getConteudo());
+                request.setAttribute("titulo", artigo.getTitulo());
+                request.setAttribute("conteudo", artigo.getConteudo());
+            } else {
+                List<Artigo> artigos = artigoDao.findAll();                
+                request.setAttribute("artigos", artigos);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
