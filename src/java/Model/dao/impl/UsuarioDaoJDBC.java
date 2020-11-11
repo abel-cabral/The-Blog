@@ -1,6 +1,5 @@
 package Model.dao.impl;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +13,7 @@ import Model.dao.UsuarioDao;
 import Model.entities.Usuario;
 
 public class UsuarioDaoJDBC implements UsuarioDao {
+
     private final Connection conn;
 
     public UsuarioDaoJDBC(Connection conn) {
@@ -120,9 +120,9 @@ public class UsuarioDaoJDBC implements UsuarioDao {
     public List<Usuario> findAll(Integer id) {
         PreparedStatement st = null;
         ResultSet rs = null;
-        try {            
+        try {
             st = conn.prepareStatement("SELECT * FROM usuario where id NOT IN (select id from usuario where id=?)");
-            st.setInt(1, id);            
+            st.setInt(1, id);
             rs = st.executeQuery();
 
             if (rs.next()) {
@@ -142,7 +142,7 @@ public class UsuarioDaoJDBC implements UsuarioDao {
             DB.closeResultSet(rs);
         }
     }
-    
+
     @Override
     public List<Usuario> findAll() {
         // Como nao existe ID 0, ele sempre irá retornar todos os usuários
@@ -152,10 +152,10 @@ public class UsuarioDaoJDBC implements UsuarioDao {
     @Override
     public Usuario doLogin(String cpf, String senha) {
         Usuario user = null;
-        
+
         PreparedStatement st = null;
         ResultSet rs = null;
-        try {            
+        try {
             st = conn.prepareStatement("SELECT * FROM usuario WHERE cpf=? and senha=? limit 1");
             st.setString(1, cpf);
             st.setString(2, senha);

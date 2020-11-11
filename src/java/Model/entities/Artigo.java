@@ -3,6 +3,7 @@ package Model.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 public class Artigo implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -13,8 +14,9 @@ public class Artigo implements Serializable {
     private String conteudo;
     private String liberar;
     private String aprovado;
+    private Usuario autor;
 
-    public Artigo(Integer id, Integer id_usuario, Integer id_categoria, String titulo, String conteudo, String liberar, String aprovado) {
+    public Artigo(Integer id, Integer id_usuario, Integer id_categoria, String titulo, String conteudo, String liberar, String aprovado, Usuario autor) {
         this.id = id;
         this.id_usuario = id_usuario;
         this.id_categoria = id_categoria;
@@ -22,6 +24,7 @@ public class Artigo implements Serializable {
         this.conteudo = conteudo;
         this.liberar = liberar;
         this.aprovado = aprovado;
+        this.autor = autor;
     }
 
     public Artigo() { }
@@ -80,6 +83,14 @@ public class Artigo implements Serializable {
 
     public void setAprovado(String aprovado) {
         this.aprovado = aprovado;
+    }
+
+    public Usuario getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Usuario autor) {
+        this.autor = autor;
     }
 
     @Override

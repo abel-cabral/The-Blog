@@ -7,7 +7,6 @@ import Model.entities.Artigo;
 import Model.entities.Usuario;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -69,17 +68,15 @@ public class ArtigoController extends HttpServlet {
             String id = request.getParameter("id");
             if (id != null) {     
                 Integer aux_id = Integer.parseInt(request.getParameter("id"));
-                Integer aux_id_autor = Integer.parseInt(request.getParameter("id_autor"));
                 Artigo artigo = artigoDao.findById(aux_id);
-                Usuario autor = usuarioDao.findById(aux_id_autor);
+                
                 request.setAttribute("titulo", artigo.getTitulo());
                 request.setAttribute("conteudo", artigo.getConteudo());
-                request.setAttribute("autor", autor.getNome());
+                request.setAttribute("autor", artigo.getAutor().getNome());
                 
             } else {
-                ArrayList<Object> aux = artigoDao.findAllAutoresArtigos();                          
-                request.setAttribute("artigos", aux.get(0));
-                request.setAttribute("autores", aux.get(1));
+                List<Artigo> artigos = artigoDao.findAll();
+                request.setAttribute("artigos", artigos);
             }
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());

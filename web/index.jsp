@@ -19,7 +19,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <c:forEach var="artigo" items="${artigos}" varStatus="loop">
+                        <c:forEach var="artigo" items="${artigos}">
                             <div class="card mb-3">                                
                                 <c:if test="${artigo.id_categoria eq 1}">
                                     <img class="card-img-top" alt="100%x180" src="./assets/images/politica.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">                                    
@@ -36,7 +36,7 @@
                                     <div class="float-right">                                        
                                         <a href="artigo.jsp?id=${artigo.id}" class="btn btn-primary" id="lerMais">Continue lendo</a>
                                     </div>                    
-                                    <p class="card-text"><small class="text-muted"><b>Author:</b> ${autores[loop.index].nome}</small></p>
+                                    <p class="card-text"><small class="text-muted"><b>Author:</b> ${artigo.autor.nome}</small></p>
                                 </div>
                             </div>
                         </c:forEach>

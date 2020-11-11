@@ -1,8 +1,4 @@
 <jsp:include page="/ArtigoController" />
-<%
-    String conteudo = (String) request.getAttribute("conteudo");
-    String titulo = (String) request.getAttribute("titulo");
-%>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,13 +10,13 @@
         <div class="container">
             <jsp:include page="menu_principal.jsp" />            
             <section>
-                <h1 class="display-4"><%= titulo%></h1>
+                <h1 class="display-4"><%= request.getAttribute("titulo") %></h1>
                 <div class="row">
                     <div class="col-12">
-                        <%= conteudo%>
+                        <%= request.getAttribute("conteudo") %>
                     </div>               
                     <div class="m-2 pl-2 pr-2">
-                        <p class="card-text"><small class="text-muted"><b>Autor:</b> <%= request.getAttribute("titulo")%></small></p>                    
+                        <p class="card-text"><small class="text-muted"><b>Autor:</b> <%= request.getAttribute("autor") %></small></p>                    
                     </div>                    
                     <div>
                         <div class="m-2 pl-2 pr-2">
