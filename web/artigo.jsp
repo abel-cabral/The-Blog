@@ -14,11 +14,14 @@
         <div class="container">
             <jsp:include page="menu_principal.jsp" />            
             <section>
-                <h1 class="display-4"><%= titulo %></h1>
+                <h1 class="display-4"><%= titulo%></h1>
                 <div class="row">
                     <div class="col-12">
-                        <%= conteudo %>
-                    </div>                                     
+                        <%= conteudo%>
+                    </div>               
+                    <div class="m-2 pl-2 pr-2">
+                        <p class="card-text"><small class="text-muted"><b>Autor:</b> <%= request.getAttribute("titulo")%></small></p>                    
+                    </div>                    
                     <div>
                         <div class="m-2 pl-2 pr-2">
                             <h2>Comentários de Nossos Usuários</h2>

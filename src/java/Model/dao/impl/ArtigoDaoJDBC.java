@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ArtigoDaoJDBC implements ArtigoDao {
@@ -148,18 +150,58 @@ public class ArtigoDaoJDBC implements ArtigoDao {
             DB.closeStatement(st);
             DB.closeResultSet(rs);
         }
-    }
+    } 
+    
 
     @Override
     public List<Artigo> findAll() {
         // Como nao existe ID 0, ele sempre irá retornar todos os usuários
         return this.findAll(0);
     }
+    
+    
+    @Override
+    public ArrayList<Object> findAllAutoresArtigos() {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try {            
+            st = conn.prepareStatement("SELECT * FROM artigo INNER JOIN usuario ON artigo.id_usuario = usuario.id");            
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                List<Artigo> artigos = new ArrayList<>();
+                List<Usuario> usuarios = new ArrayList<>();
+                do {
+                    Artigo dep = instantiateArtigo(rs);
+                    Usuario user = instantiateUsuario(rs);
+                    artigos.add(dep);
+                    usuarios.add(user);
+                } while (rs.next());
+                ArrayList<Object> aux = new ArrayList<>();                
+                aux.add(artigos);
+                aux.add(usuarios);
+                return aux;
+            }
+            return null;
+
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
+    }
+    
 
     // Ao inves de montar manualmente em cada funcao, reutilizamos;    
     private Artigo instantiateArtigo(ResultSet rs) throws SQLException {
         Artigo dep = new Artigo(rs.getInt("id"), rs.getInt("id_usuario"), rs.getInt("id_categoria"), rs.getString("titulo"), rs.getString("conteudo"), rs.getString("liberar"), rs.getString("aprovado"));
         return dep;
     }
-
+    
+    // Ao inves de montar manualmente em cada funcao, reutilizamos;    
+    private Usuario instantiateUsuario(ResultSet rs) throws SQLException {
+        Usuario dep = new Usuario(rs.getInt("id"), rs.getInt("papel"), rs.getString("nome"), rs.getString("email"), rs.getString("senha"), rs.getString("cpf"), rs.getString("cadastro_aprovado"));
+        return dep;
+    }
 }
