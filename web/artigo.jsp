@@ -47,7 +47,8 @@
                                                 <p class="${comentario.id}">${comentario.comentario}</p>
                                                 <c:set var="id_comentador" value="${comentario.usuario.id}" />
                                                 <c:set var="id_usuario" value="<%=session.getAttribute("id")%>" />                                                                                                
-                                                <c:if test="${id_comentador eq id_usuario}">
+                                                <c:set var="papel" value="<%= session.getAttribute("papel") %>" />
+                                                <c:if test="${id_comentador eq id_usuario or papel == '0'}">
                                                     <div>
                                                         <form method="POST" action="ComentarioController">
                                                         <section class="${comentario.id}">

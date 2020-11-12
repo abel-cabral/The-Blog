@@ -26,7 +26,7 @@
             <!-- SE FOR UM ADMINISTRADOR-->
             <% if (papel == 0) { %>            
             <li class="nav-item">
-                <a class="nav-link" href="./administracao.jsp">Gerenciar Postagens</a>
+                <a class="nav-link" href="./gerenciar_artigos.jsp">Gerenciar Artigos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./administracao.jsp">Gerenciar Usuários</a>

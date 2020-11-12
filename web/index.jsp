@@ -20,25 +20,27 @@
                 <div class="row">
                     <div class="col-12">
                         <c:forEach var="artigo" items="${artigos}">
-                            <div class="card mb-3">                                
-                                <c:if test="${artigo.id_categoria eq 1}">
-                                    <img class="card-img-top" alt="100%x180" src="./assets/images/politica.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">                                    
-                                </c:if>
-                                <c:if test="${artigo.id_categoria eq 2}">
-                                    <img class="card-img-top" alt="100%x180" src="./assets/images/atualidade.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
-                                </c:if>
-                                <c:if test="${artigo.id_categoria eq 3}">
-                                    <img class="card-img-top" alt="100%x180" src="./assets/images/arte.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
-                                </c:if>                                
-                                <div class="card-body">
-                                    <h5 class="card-title">${artigo.titulo}</h5>
-                                    <div class="card-text show-summary">${artigo.conteudo}</div>
-                                    <div class="float-right">                                        
-                                        <a href="artigo.jsp?id=${artigo.id}" class="btn btn-primary" id="lerMais">Continue lendo</a>
-                                    </div>                    
-                                    <p class="card-text"><small class="text-muted"><b>Author:</b> ${artigo.autor.nome}</small></p>
+                            <c:if test="${artigo.aprovado eq 'S'}">
+                                <div class="card mb-3">                                
+                                    <c:if test="${artigo.id_categoria eq 1}">
+                                        <img class="card-img-top" alt="100%x180" src="./assets/images/politica.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">                                    
+                                    </c:if>
+                                    <c:if test="${artigo.id_categoria eq 2}">
+                                        <img class="card-img-top" alt="100%x180" src="./assets/images/atualidade.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
+                                    </c:if>
+                                    <c:if test="${artigo.id_categoria eq 3}">
+                                        <img class="card-img-top" alt="100%x180" src="./assets/images/arte.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
+                                    </c:if>                                
+                                    <div class="card-body">
+                                        <h5 class="card-title">${artigo.titulo}</h5>
+                                        <div class="card-text show-summary">${artigo.conteudo}</div>
+                                        <div class="float-right">                                        
+                                            <a href="artigo.jsp?id=${artigo.id}" class="btn btn-primary" id="lerMais">Continue lendo</a>
+                                        </div>                    
+                                        <p class="card-text"><small class="text-muted"><b>Author:</b> ${artigo.autor.nome}</small></p>
+                                    </div>
                                 </div>
-                            </div>
+                            </c:if>
                         </c:forEach>
                     </div>
             </section>
