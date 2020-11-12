@@ -44,18 +44,36 @@
                                             </div>                                            
                                             <div class="col-md-10">
                                                 <p><strong>${comentario.usuario.nome}</strong></p>
-                                                <p>${comentario.comentario}</p>
+                                                <p class="${comentario.id}">${comentario.comentario}</p>
                                                 <c:set var="id_comentador" value="${comentario.usuario.id}" />
-                                                <c:set var="id_usuario" value="<%= session.getAttribute("id") %>" />                                                                                                
+                                                <c:set var="id_usuario" value="<%= session.getAttribute("id")%>" />                                                                                                
                                                 <c:if test="${id_comentador eq id_usuario}">
+                                                    <div>
+                                                        <form method="POST" action="ComentarioController">
+                                                        <section class="${comentario.id}">
+                                                            <input type="hidden" name="tipo" value="delete">
+                                                            <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">  
+                                                            <input type="hidden" name="id_comentario" value="${comentario.id}" >
+                                                            <span class="float-right">
+                                                                <button type="submit" class="btn btn btn-outline-danger"> <i class="fa fa-crosshairs"></i> Apagar</button>
+                                                                <button type="button" class="btn btn-outline-info" onclick="esconderTexto(${comentario.id})"> <i class="fa fa-crosshairs"></i> Editar</button>
+                                                            </span
+                                                        </section>
+                                                    </form>                         
+                                                    </div>                            
+                                                </c:if>     
+                                                <div>
                                                     <form method="POST" action="ComentarioController">
-                                                        <input type="hidden" name="tipo" value="delete">
-                                                        <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">  
-                                                        <input type="hidden" name="id_comentario" value="${comentario.id}" >
-                                                        <button type="submit" class="float-right btn text-white btn-danger"> <i class="fa fa-crosshairs"></i> Apagar</button>
+                                                        <section id="${comentario.id}" class="editorComentario">
+                                                            <textarea class="form-control" rows="5" name="comentario">${comentario.comentario}</textarea>                                                            
+                                                            <input type="hidden" name="id_comentario" value="${comentario.id}"> 
+                                                            <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">  
+                                                            <br>
+                                                            <input type="hidden" name="tipo" value="update">
+                                                            <button type="submit" class="float-right btn btn-outline-success"> <i class="fa fa-crosshairs"></i> Salvar</button>
+                                                        </section>
                                                     </form> 
-                                                </c:if>                              
-                                                </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -64,19 +82,19 @@
                         </c:forEach>
                         <form method="POST" action="ComentarioController">
                             <div class="m-2 pl-2 pr-2 form-group">
-                            <label for="comment">Nos deixe seu comentário</label>
+                                <label for="comment">Nos deixe seu comentário</label>
                             </div>
-                            <% if(session.getAttribute("logado") == "true") { %>
+                            <% if (session.getAttribute("logado") == "true") {%>
                             <div class="m-2 pl-2 pr-2 form-group">
                                 <textarea class="form-control" rows="5" name="comentario"></textarea>                                
-                                <input type="hidden" name="id_usuario" value="<%= session.getAttribute("id") %>">                                
+                                <input type="hidden" name="id_usuario" value="<%= session.getAttribute("id")%>">                                
                                 <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">                                
                                 <input type="hidden" name="tipo" value="novo">
                             </div>
                             <div class="m-2 pl-2 pr-2">
                                 <button type="submit" class="btn btn-outline-dark mr-2">Comentar</button>
                             </div>
-                            <% } %>
+                            <% }%>
                         </form>
                     </div>
                 </div>

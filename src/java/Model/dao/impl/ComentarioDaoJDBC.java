@@ -51,9 +51,24 @@ public class ComentarioDaoJDBC implements ComentarioDao {
     }
 
     @Override
+    public void update(Comentario obj) {
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement("UPDATE comentario SET comentario=? WHERE id=?");
+            st.setString(1, obj.getComentario());            
+            st.setInt(2, obj.getId());   
+            st.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
+    }
+
+    @Override
     public void deleteById(Integer id) {
         PreparedStatement st = null;
-        
+
         try {
             st = conn.prepareStatement("DELETE FROM comentario WHERE id = ?");
             st.setInt(1, id);
@@ -65,6 +80,30 @@ public class ComentarioDaoJDBC implements ComentarioDao {
             throw new DbException(e.getMessage());
         } finally {
             DB.closeStatement(st);
+        }
+    }
+
+    @Override
+    public Comentario findById(Integer id) {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.prepareStatement("SELECT * FROM comentario INNER JOIN usuario ON comentario.id_usuario = usuario.id WHERE comentario.id=?");
+            st.setInt(1, id);
+            rs = st.executeQuery();
+
+            // rs inicia no 0 da tabela, precisamos antes de avançar testar se nao é null
+            if (rs.next()) {
+                Comentario dep = instantiateComentario(rs);
+                return dep;
+            }
+            return null;
+
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
         }
     }
 
@@ -100,12 +139,12 @@ public class ComentarioDaoJDBC implements ComentarioDao {
         // SELECT * FROM artigo INNER JOIN usuario ON artigo.id_usuario = usuario.id WHERE artigo.id=?
         return null;
     }
-    
+
     private Comentario instantiateComentario(ResultSet rs) throws SQLException {
         Comentario dep = new Comentario(rs.getInt("id"), rs.getInt("id_artigo"), rs.getInt("id_usuario"), rs.getString("comentario"), this.instantiateUsuario(rs));
         return dep;
     }
-    
+
     private Usuario instantiateUsuario(ResultSet rs) throws SQLException {
         Usuario dep = new Usuario(rs.getInt("id_usuario"), rs.getInt("papel"), rs.getString("nome"), rs.getString("email"), rs.getString("senha"), rs.getString("cpf"), rs.getString("cadastro_aprovado"));
         return dep;
