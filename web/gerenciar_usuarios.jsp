@@ -5,16 +5,15 @@
 <html>
     <head>        
         <jsp:include page="./cabecalho.html" />
-        <link rel="stylesheet" href="./administracao.css">       
+        <link rel="stylesheet" href="./gerenciar_usuarios.css">       
     </head>
     <body>
         <div class="container">
             <jsp:include page="menu_principal.jsp" />            
             <section>
                 <div class="jumbotron">
-                    <h1 class="display-4">Tela de Administração</h1>            
+                    <h1 class="display-4">Controle de Usuários</h1>            
                     <hr class="my-4">
-                    <p>Lista de Usuários do Sistema</p>
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -81,6 +80,6 @@
             </section>
         </div>
         <jsp:include page="./scripts_basicos.html"/>
-        <script src="./administracao.js"></script>
+        <script src="./gerenciar_usuarios.js"></script>
     </body>
 </html>

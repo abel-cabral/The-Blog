@@ -19,9 +19,8 @@
             <jsp:include page="menu_principal.jsp" />
             <section>
                 <div class="jumbotron">
-                    <h1 class="display-4">Tela de Publicação</h1>            
+                    <h1 class="display-4">Editor de Artigos</h1>            
                     <hr class="my-4">
-                    <p>Escreva sua postagem aqui</p>
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -36,7 +35,7 @@
                                     <c:forEach var="categoria" items="${categorias}">                                        
                                         <option value="${categoria.id}">${categoria.descricao}</option>                                    
                                     </c:forEach>      
-                                    
+
                                 </select>                                
                                 <label class="error" for="categoria"></label>
                             </div>                            
@@ -46,11 +45,15 @@
                                 <label class="error" for="conteudo"></label>
                             </div>
                             <div>
-                                <input type="hidden" name="id_usuario" value="<%= id %>"/>
-                                <input type="hidden" name="tipo" value="novoArtigo"/>
+                                <input type="hidden" name="id_usuario" value="<%= id%>"/>
+                                <input type="hidden" id="liberar" name="liberar" value="N"/>
+                                <input type="hidden" name="tipo" value="novo"/>
                             </div>
-                            <div class="">
-                                <button class="btn btn-dark btn-md mt-2 mb-3">Publicar</button>
+                            <div>
+                                <span class="float-right">
+                                    <button class="btn btn-outline-primary btn-md mt-2 mb-3" id="buttaoPublicar">Publicar</button>  
+                                    <button class="btn btn-outline-success btn-md mt-2 mb-3" id="buttaoSalvar">Salvar</button>                                                                  
+                                </span>
                             </div>
                         </form>
                     </div>

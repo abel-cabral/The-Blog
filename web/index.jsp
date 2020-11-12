@@ -13,9 +13,8 @@
             <jsp:include page="menu_principal.jsp" />            
             <section>
                 <div class="jumbotron">
-                    <h1 class="display-4">Tela de Postagens</h1>            
-                    <hr class="my-4">
-                    <p>Aqui pode se ver todas as publicações dos autores</p>
+                    <h1 class="display-4">Artigos do Blog</h1>            
+                    <hr class="my-4">                    
                 </div>
                 <div class="row">
                     <div class="col-12">

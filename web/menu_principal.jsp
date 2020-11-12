@@ -29,7 +29,7 @@
                 <a class="nav-link" href="./gerenciar_artigos.jsp">Gerenciar Artigos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./administracao.jsp">Gerenciar Usuários</a>
+                <a class="nav-link" href="./gerenciar_usuarios.jsp">Gerenciar Usuários</a>
             </li>
             <% } %>
 
@@ -39,7 +39,7 @@
                 <a class="nav-link" href="./editor.jsp">Criar Postagem</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./editor.jsp">Minhas Postagens</a>
+                <a class="nav-link" href="./gerenciar_artigos.jsp">Minhas Postagens</a>
             </li>
             <% } %>            
         </ul>            

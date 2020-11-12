@@ -21,13 +21,15 @@ public class ArtigoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String RequisicaoTipo = request.getParameter("tipo");
+        Integer id_artigo = Integer.parseInt(request.getParameter("id_artigo"));
         try {
-            if (RequisicaoTipo.equals("novoArtigo")) {
+            if (RequisicaoTipo.equals("novo")) {
                 Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
-                Integer id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
+                Integer id_categoria = Integer.parseInt(request.getParameter("id_categoria"));                
                 String titulo = request.getParameter("titulo");
                 String conteudo = request.getParameter("conteudo");
-                String liberar = "N";
+                String liberar = request.getParameter("liberar");
+                
                 String aprovado = "N";
                 Artigo artigo = new Artigo();
                 artigo.setId_usuario(id_usuario);
@@ -36,20 +38,19 @@ public class ArtigoController extends HttpServlet {
                 artigo.setConteudo(conteudo);
                 artigo.setLiberar(liberar);
                 artigo.setAprovado(aprovado);
-                artigoDao.insert(artigo);
+                artigoDao.insert(artigo);                
             } else {
-                Integer id_artigo = Integer.parseInt(request.getParameter("id_artigo"));
                 Artigo artigo = artigoDao.findById(id_artigo);
-                if (RequisicaoTipo.equals("update")) {                    
+                if(RequisicaoTipo.equals("update")) {                    
                     // artigoDao.update(artigo);
                 } else if (RequisicaoTipo.equals("aprovado")) {                    
                     artigo.setAprovado(request.getParameter("cadastro_aprovado"));
                     artigoDao.update(artigo);
                 } else if (RequisicaoTipo.equals("delete")) {
                     artigoDao.deleteById(id_artigo);
-                }
+                }                
             }
-            response.sendRedirect(request.getContextPath() + "/gerenciar_artigos.jsp");
+            response.sendRedirect(request.getContextPath() + "/gerenciar_artigos.jsp");                        
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
         }

@@ -33,7 +33,7 @@ public class Administrador extends HttpServlet {
         }
         List<Usuario> usuarios = usuarioDao.findAll(id);
         request.setAttribute("usuarios", usuarios);
-        response.sendRedirect(request.getContextPath() + "/administracao.jsp");
+        response.sendRedirect(request.getContextPath() + "/gerenciar_usuarios.jsp");
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Administrador extends HttpServlet {
                 // Faço isso para garantir que ao deletar existe o id
                 usuarioDao.deleteById(usuario.getId());
             }
-            response.sendRedirect(request.getContextPath() + "/administracao.jsp");
+            response.sendRedirect(request.getContextPath() + "/gerenciar_usuarios.jsp");
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
         }
