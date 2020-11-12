@@ -1,9 +1,3 @@
-<%-- 
-    Document   : register
-    Created on : 02/10/2020, 21:56:07
-    Author     : Abel Cabral Arruda
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +12,7 @@
                 <div class="row mb-3 mt-5">
                     <div class="col-4 offset-4 card bg-ligth">
                         <h1>THE BLOG</h1>
-                        <form id="formCadastro" method="post" action="./formCadastro" class="mb-3 mt-3">
+                        <form id="formCadastro" method="POST" action="VerificarLogin" class="mb-3 mt-3">
                             <div class="form-group row">
                                 <div class="col-12">
                                     <div class="input-group">
@@ -85,6 +79,7 @@
                             </div>
                             <a href="./login.jsp">Possui uma conta?</a>
                             <div class="form-group mb-2">
+                                <input type="hidden" name="tipo" value="novo">
                                 <button type="submit" class="btn btn-outline-dark mr-2">Cadastrar</button>
                             </div>                        
                         </form>                
