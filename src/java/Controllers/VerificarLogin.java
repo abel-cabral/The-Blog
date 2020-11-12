@@ -24,14 +24,11 @@ public class VerificarLogin extends HttpServlet {
         if (usuario.getId() != 0) {
             // Cria uma sessao
             HttpSession session = request.getSession();
-                        
-            String Name[] = usuario.getNome().split(" "); 
-            session.setAttribute("NomeUsuarioLogado", Name[0]);
             
+            session.setAttribute("NomeUsuarioLogado", (usuario.getNome().split(" "))[0]);            
             session.setAttribute("papel", usuario.getPapel().toString());
             session.setAttribute("id", usuario.getId().toString());
-            session.setAttribute("logado", "true");            
-
+            session.setAttribute("logado", "true");
             response.sendRedirect(request.getContextPath() + "/");
         } else {                  
             response.sendRedirect(request.getContextPath() + "/login.jsp");

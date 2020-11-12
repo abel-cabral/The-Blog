@@ -71,7 +71,7 @@ public class ArtigoController extends HttpServlet {
                 request.setAttribute("titulo", artigo.getTitulo());
                 request.setAttribute("conteudo", artigo.getConteudo());
                 request.setAttribute("autor", artigo.getAutor().getNome());
-                
+                request.setAttribute("id_artigo", artigo.getId());
             } else {
                 List<Artigo> artigos = artigoDao.findAll();
                 request.setAttribute("artigos", artigos);

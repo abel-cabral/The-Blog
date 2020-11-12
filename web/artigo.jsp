@@ -44,12 +44,13 @@
                                             </div>
                                             <div class="col-md-10">
                                                 <p><strong>${comentario.usuario.nome}</strong></p>
-                                                <p>${comentario.comentario}</p>
-                                                <p>
-                                                    <!--
-                                                    <a class="float-right btn btn-outline-primary ml-2">  <i class="fa fa-reply"></i> Reply</a>
-                                                    -->                                                
-                                                    <a class="float-right btn text-white btn-danger"> <i class="fa fa-crosshairs"></i> Apagar</a>
+                                                <p>${comentario.comentario}</p>                                                                                                                    
+                                                <form method="POST" action="ComentarioController">
+                                                    <input type="hidden" name="tipo" value="delete">
+                                                    <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">  
+                                                    <input type="hidden" name="id_comentario" value="${comentario.id}" >
+                                                    <button type="submit" class="float-right btn text-white btn-danger"> <i class="fa fa-crosshairs"></i> Apagar</button>
+                                                </form>
                                                 </p>
                                             </div>
                                         </div>
@@ -57,13 +58,17 @@
                                 </div>
                             </div> 
                         </c:forEach>
-                        <div class="m-2 pl-2 pr-2 form-group">
-                            <label for="comment">Nos deixe seu comentário</label>
-                            <textarea class="form-control" rows="5" id="comment"></textarea>
-                        </div>
-                        <div class="m-2 pl-2 pr-2">
-                            <button type="submit" class="btn btn-outline-dark mr-2">Comentar</button>
-                        </div>     
+                        <form method="POST" action="ComentarioController">
+                            <div class="m-2 pl-2 pr-2 form-group">
+                                <label for="comment">Nos deixe seu comentário</label>                        
+                                <textarea class="form-control" rows="5" name="comentario"></textarea>                                
+                                <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">                                
+                                <input type="hidden" name="tipo" value="novo">
+                            </div>
+                            <div class="m-2 pl-2 pr-2">
+                                <button type="submit" class="btn btn-outline-dark mr-2">Comentar</button>
+                            </div>     
+                        </form>
                     </div>
                 </div>
             </section>
