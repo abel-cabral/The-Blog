@@ -41,16 +41,18 @@
                                                 <c:if test="${comentario.usuario.papel eq '2'}">
                                                     <p class="text-secondary text-center">Comentarista</p>    
                                                 </c:if>                                                
-                                            </div>
+                                            </div>                                            
                                             <div class="col-md-10">
                                                 <p><strong>${comentario.usuario.nome}</strong></p>
-                                                <p>${comentario.comentario}</p>                                                                                                                    
-                                                <form method="POST" action="ComentarioController">
-                                                    <input type="hidden" name="tipo" value="delete">
-                                                    <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">  
-                                                    <input type="hidden" name="id_comentario" value="${comentario.id}" >
-                                                    <button type="submit" class="float-right btn text-white btn-danger"> <i class="fa fa-crosshairs"></i> Apagar</button>
-                                                </form>
+                                                <p>${comentario.comentario}</p> 
+                                                <c:if test="${comentario.usuario.id eq comentario.id_usuario}">                                                
+                                                    <form method="POST" action="ComentarioController">
+                                                        <input type="hidden" name="tipo" value="delete">
+                                                        <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">  
+                                                        <input type="hidden" name="id_comentario" value="${comentario.id}" >
+                                                        <button type="submit" class="float-right btn text-white btn-danger"> <i class="fa fa-crosshairs"></i> Apagar</button>
+                                                    </form>
+                                                </c:if>                                     
                                                 </p>
                                             </div>
                                         </div>

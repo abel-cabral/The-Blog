@@ -164,7 +164,7 @@ public class ArtigoDaoJDBC implements ArtigoDao {
 
     // Ao inves de montar manualmente em cada funcao, reutilizamos;    
     private Usuario instantiateUsuario(ResultSet rs) throws SQLException {
-        Usuario dep = new Usuario(rs.getInt("id"), rs.getInt("papel"), rs.getString("nome"), rs.getString("email"), rs.getString("senha"), rs.getString("cpf"), rs.getString("cadastro_aprovado"));
+        Usuario dep = new Usuario(rs.getInt("id_usuario"), rs.getInt("papel"), rs.getString("nome"), rs.getString("email"), rs.getString("senha"), rs.getString("cpf"), rs.getString("cadastro_aprovado"));
         return dep;
     }
 }
