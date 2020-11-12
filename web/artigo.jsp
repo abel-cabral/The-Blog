@@ -46,7 +46,7 @@
                                                 <p><strong>${comentario.usuario.nome}</strong></p>
                                                 <p class="${comentario.id}">${comentario.comentario}</p>
                                                 <c:set var="id_comentador" value="${comentario.usuario.id}" />
-                                                <c:set var="id_usuario" value="<%= session.getAttribute("id")%>" />                                                                                                
+                                                <c:set var="id_usuario" value="<%=session.getAttribute("id")%>" />                                                                                                
                                                 <c:if test="${id_comentador eq id_usuario}">
                                                     <div>
                                                         <form method="POST" action="ComentarioController">
@@ -80,12 +80,10 @@
                                 </div>
                             </div> 
                         </c:forEach>
-                        <form method="POST" action="ComentarioController">
+                        <form method="POST" action="ComentarioController">                            
+                            <% if (session.getAttribute("papel").equals("2")) {%>
                             <div class="m-2 pl-2 pr-2 form-group">
                                 <label for="comment">Nos deixe seu comentário</label>
-                            </div>
-                            <% if (session.getAttribute("logado") == "true") {%>
-                            <div class="m-2 pl-2 pr-2 form-group">
                                 <textarea class="form-control" rows="5" name="comentario"></textarea>                                
                                 <input type="hidden" name="id_usuario" value="<%= session.getAttribute("id")%>">                                
                                 <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">                                

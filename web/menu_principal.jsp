@@ -26,14 +26,20 @@
             <!-- SE FOR UM ADMINISTRADOR-->
             <% if (papel == 0) { %>            
             <li class="nav-item">
-                <a class="nav-link" href="./administracao.jsp">Manager</a>
+                <a class="nav-link" href="./administracao.jsp">Gerenciar Postagens</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./administracao.jsp">Gerenciar Usuários</a>
             </li>
             <% } %>
 
-            <!-- SE FOR UM ADM OU UM AUTOR -->
-            <% if (papel <= 1) { %>            
+            <!-- SE FOR UM AUTOR -->
+            <% if (papel == 1) { %>            
             <li class="nav-item">
-                <a class="nav-link" href="./editor.jsp">Editor</a>
+                <a class="nav-link" href="./editor.jsp">Criar Postagem</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./editor.jsp">Minhas Postagens</a>
             </li>
             <% } %>            
         </ul>            

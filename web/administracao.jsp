@@ -26,7 +26,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Cargo</th>
                                     <th scope="col">Situação</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col">Controle</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,18 +35,29 @@
                                         <th scope="row">${usuario.id}</th>
                                         <td>${usuario.nome}</td>
                                         <td>${usuario.email}</td>
-                                        <td>${usuario.papel}</td>
-                                        <td>${usuario.cadastro_aprovado}</td>                                        
-                                        <td>
-                                            <c:if test="${usuario.cadastro_aprovado eq 'N'}">
+                                        <c:if test="${usuario.papel eq 0}">
+                                            <td>Administrador</td>
+                                        </c:if>
+                                        <c:if test="${usuario.papel eq 1}">
+                                            <td>Editor</td>
+                                        </c:if>
+                                        <c:if test="${usuario.papel eq 2}">
+                                            <td>Comentarista</td>
+                                        </c:if>                                                                       
+                                        <c:if test="${usuario.cadastro_aprovado eq 'N'}">
+                                            <td>Pedente</td> 
+                                            <td>
                                                 <form name="updateUsuario1" action="Administracao" method="POST">
                                                     <input type="hidden" name="id" value="${usuario.id}">
                                                     <input type="hidden" name="cadastro_aprovado" value="S">
                                                     <input type="hidden" name="tipo" value="update">
                                                     <button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Aprovar"><i class="fa fa-check"></i></button>
                                                 </form>
-                                            </c:if>
-                                            <c:if test="${usuario.cadastro_aprovado eq 'S'}">
+                                            </td>
+                                        </c:if>
+                                        <c:if test="${usuario.cadastro_aprovado eq 'S'}">
+                                            <td>Ativo</td> 
+                                            <td>
                                                 <form name="updateUsuario2" action="Administracao" method="POST">
                                                     <input type="hidden" name="id" value="${usuario.id}">
                                                     <input type="hidden" name="cadastro_aprovado" value="N">
@@ -58,8 +69,9 @@
                                                     <input type="hidden" name="tipo" value="delete">
                                                     <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-times-circle"></i></button>
                                                 </form>
-                                            </c:if>
-                                        </td>
+                                            </td>
+                                        </c:if>
+
                                     </tr>                 
                                     </tr>
                                 </c:forEach>                                               
