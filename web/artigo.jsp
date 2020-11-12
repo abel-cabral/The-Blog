@@ -44,15 +44,17 @@
                                             </div>                                            
                                             <div class="col-md-10">
                                                 <p><strong>${comentario.usuario.nome}</strong></p>
-                                                <p>${comentario.comentario}</p> 
-                                                <c:if test="${comentario.usuario.id eq comentario.id_usuario}">                                                
+                                                <p>${comentario.comentario}</p>
+                                                <c:set var="id_comentador" value="${comentario.usuario.id}" />
+                                                <c:set var="id_usuario" value="<%= session.getAttribute("id") %>" />                                                                                                
+                                                <c:if test="${id_comentador eq id_usuario}">
                                                     <form method="POST" action="ComentarioController">
                                                         <input type="hidden" name="tipo" value="delete">
                                                         <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">  
                                                         <input type="hidden" name="id_comentario" value="${comentario.id}" >
                                                         <button type="submit" class="float-right btn text-white btn-danger"> <i class="fa fa-crosshairs"></i> Apagar</button>
-                                                    </form>
-                                                </c:if>                                     
+                                                    </form> 
+                                                </c:if>                              
                                                 </p>
                                             </div>
                                         </div>
@@ -62,14 +64,19 @@
                         </c:forEach>
                         <form method="POST" action="ComentarioController">
                             <div class="m-2 pl-2 pr-2 form-group">
-                                <label for="comment">Nos deixe seu comentário</label>                        
+                            <label for="comment">Nos deixe seu comentário</label>
+                            </div>
+                            <% if(session.getAttribute("logado") == "true") { %>
+                            <div class="m-2 pl-2 pr-2 form-group">
                                 <textarea class="form-control" rows="5" name="comentario"></textarea>                                
+                                <input type="hidden" name="id_usuario" value="<%= session.getAttribute("id") %>">                                
                                 <input type="hidden" name="id_artigo" value="<%= request.getAttribute("id_artigo")%>">                                
                                 <input type="hidden" name="tipo" value="novo">
                             </div>
                             <div class="m-2 pl-2 pr-2">
                                 <button type="submit" class="btn btn-outline-dark mr-2">Comentar</button>
-                            </div>     
+                            </div>
+                            <% } %>
                         </form>
                     </div>
                 </div>

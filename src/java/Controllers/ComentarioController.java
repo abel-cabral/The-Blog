@@ -23,7 +23,8 @@ public class ComentarioController extends HttpServlet {
             Integer id_artigo = Integer.parseInt(request.getParameter("id_artigo"));                                    
             if ("novo".equals(RequisicaoTipo)) {                                
                 String comentario = request.getParameter("comentario");
-                comentarioDao.insert(new Comentario(null, id_artigo, 2, comentario));
+                Integer id_usuario = Integer.parseInt(request.getParameter("id_usuario"));                
+                comentarioDao.insert(new Comentario(null, id_artigo, id_usuario, comentario));
                 response.sendRedirect(request.getContextPath() + "//artigo.jsp?id=" + id_artigo);
             } else if("delete".equals(RequisicaoTipo)) {
                 Integer id_comentario = Integer.parseInt(request.getParameter("id_comentario"));                                    
