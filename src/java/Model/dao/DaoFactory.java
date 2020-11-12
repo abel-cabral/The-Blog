@@ -3,11 +3,13 @@ package Model.dao;
 import Model.dao.impl.ArtigoDaoJDBC;
 import Model.dao.impl.UsuarioDaoJDBC;
 import Model.dao.impl.CategoriaDaoJDBC;
+import Model.dao.impl.ComentarioDaoJDBC;
 import db.DB;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DaoFactory {
+
     public static UsuarioDao createUsuarioDao() {
         try {
             return new UsuarioDaoJDBC(DB.getConnection());
@@ -16,7 +18,7 @@ public class DaoFactory {
         }
         return null;
     }
-    
+
     public static CategoriaDao createCategoriaDao() {
         try {
             return new CategoriaDaoJDBC(DB.getConnection());
@@ -24,8 +26,8 @@ public class DaoFactory {
             Logger.getLogger(DaoFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }   
-    
+    }
+
     public static ArtigoDao createArtigoDao() {
         try {
             return new ArtigoDaoJDBC(DB.getConnection());
@@ -33,5 +35,14 @@ public class DaoFactory {
             Logger.getLogger(DaoFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }   
+    }
+
+    public static ComentarioDao createComentarioDao() {
+        try {
+            return new ComentarioDaoJDBC(DB.getConnection());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DaoFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

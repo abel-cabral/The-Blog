@@ -1,4 +1,7 @@
 <jsp:include page="/ArtigoController" />
+<jsp:include page="/ComentarioController" />
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -10,44 +13,52 @@
         <div class="container">
             <jsp:include page="menu_principal.jsp" />            
             <section>
-                <h1 class="display-4"><%= request.getAttribute("titulo") %></h1>
+                <h1 class="display-4"><%= request.getAttribute("titulo")%></h1>
                 <div class="row">
                     <div class="col-12">
-                        <%= request.getAttribute("conteudo") %>
+                        <%= request.getAttribute("conteudo")%>
                     </div>               
                     <div class="m-2 pl-2 pr-2">
-                        <p class="card-text"><small class="text-muted"><b>Autor:</b> <%= request.getAttribute("autor") %></small></p>                    
+                        <p class="card-text"><small class="text-muted"><b>Autor:</b> <%= request.getAttribute("autor")%></small></p>                    
                     </div>                    
                     <div>
                         <div class="m-2 pl-2 pr-2">
-                            <h2>Coment·rios de Nossos Usu·rios</h2>
+                            <h2>Coment√°rios de Nossos Usu√°rios</h2>
                         </div>
-                        <% for (int i = 0; i < 2; i += 1) { %>
-                        <div class="card-body">                                                        
-                            <div class="card card-inner">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img src="./assets/images/usuario.jpg" class="img img-rounded img-fluid"/>
-                                            <p class="text-secondary text-center">15 Minutes Ago</p>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <p><strong>Maniruzzaman Akash</strong></p>
-                                            <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                            <p>
-                                                <!--
-                                                <a class="float-right btn btn-outline-primary ml-2">  <i class="fa fa-reply"></i> Reply</a>
-                                                -->                                                
-                                                <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-                                            </p>
+                        <c:forEach var="comentario" items="${comentarios}">
+                            <div class="card-body">                                                        
+                                <div class="card card-inner">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <img src="./assets/images/usuario.jpg" class="img img-rounded img-fluid"/>
+                                                <c:if test="${comentario.usuario.papel eq '0'}">
+                                                    <p class="text-secondary text-center">Administrador</p>    
+                                                </c:if>                                                
+                                                <c:if test="${comentario.usuario.papel eq '1'}">
+                                                    <p class="text-secondary text-center">Autor</p>    
+                                                </c:if>                                                
+                                                <c:if test="${comentario.usuario.papel eq '2'}">
+                                                    <p class="text-secondary text-center">Comentarista</p>    
+                                                </c:if>                                                
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p><strong>${comentario.usuario.nome}</strong></p>
+                                                <p>${comentario.comentario}</p>
+                                                <p>
+                                                    <!--
+                                                    <a class="float-right btn btn-outline-primary ml-2">  <i class="fa fa-reply"></i> Reply</a>
+                                                    -->                                                
+                                                    <a class="float-right btn text-white btn-danger"> <i class="fa fa-crosshairs"></i> Apagar</a>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div> 
-                        <% }%>                        
+                            </div> 
+                        </c:forEach>
                         <div class="m-2 pl-2 pr-2 form-group">
-                            <label for="comment">Nos deixe seu coment·rio</label>
+                            <label for="comment">Nos deixe seu coment√°rio</label>
                             <textarea class="form-control" rows="5" id="comment"></textarea>
                         </div>
                         <div class="m-2 pl-2 pr-2">
