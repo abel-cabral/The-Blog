@@ -46,11 +46,19 @@ public class ArtigoController extends HttpServlet {
                 } else if (RequisicaoTipo.equals("aprovado")) {                    
                     artigo.setAprovado(request.getParameter("cadastro_aprovado"));
                     artigoDao.update(artigo);
+                    response.sendRedirect(request.getContextPath() + "/gerenciar_artigos.jsp");                                            
+                } else if (RequisicaoTipo.equals("liberar")) {                    
+                    artigo.setLiberar(request.getParameter("cadastro_liberado"));
+                    artigoDao.update(artigo);
+                    response.sendRedirect(request.getContextPath() + "/gerenciar_meus_artigos.jsp?area=pessoal");
                 } else if (RequisicaoTipo.equals("delete")) {
+                    artigoDao.deleteById(id_artigo);                    
+                    response.sendRedirect(request.getContextPath() + "/gerenciar_artigos.jsp");                        
+                } else if (RequisicaoTipo.equals("deleteMeu")) {
                     artigoDao.deleteById(id_artigo);
+                    response.sendRedirect(request.getContextPath() + "/gerenciar_meus_artigos.jsp?area=pessoal");                        
                 }                
-            }
-            response.sendRedirect(request.getContextPath() + "/gerenciar_artigos.jsp");                        
+            }            
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
         }
@@ -60,6 +68,7 @@ public class ArtigoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String id = request.getParameter("id");
+            String area = request.getParameter("area");
             if (id != null) {
                 Integer aux_id = Integer.parseInt(request.getParameter("id"));
                 Artigo artigo = artigoDao.findById(aux_id);
@@ -68,6 +77,10 @@ public class ArtigoController extends HttpServlet {
                 request.setAttribute("conteudo", artigo.getConteudo());
                 request.setAttribute("autor", artigo.getAutor().getNome());
                 request.setAttribute("id_artigo", artigo.getId());
+            } else if(area != null) {
+                Integer id_usuario = Integer.parseInt(request.getSession().getAttribute("id").toString());
+                List<Artigo> artigos = artigoDao.findAll(id_usuario);
+                request.setAttribute("artigos", artigos);
             } else {
                 List<Artigo> artigos = artigoDao.findAll();
                 request.setAttribute("artigos", artigos);

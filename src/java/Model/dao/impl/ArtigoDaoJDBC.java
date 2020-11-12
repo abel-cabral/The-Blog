@@ -126,7 +126,7 @@ public class ArtigoDaoJDBC implements ArtigoDao {
                 st = conn.prepareStatement("SELECT * FROM artigo INNER JOIN usuario ON artigo.id_usuario = usuario.id");
             } else {
                 // Se id direfente de zero, pega só artigos do autor com aquele id 
-                st = conn.prepareStatement("SELECT * FROM artigo WHERE id_usuario=?");
+                st = conn.prepareStatement("SELECT * FROM artigo INNER JOIN usuario ON artigo.id_usuario = usuario.id WHERE artigo.id_usuario=?");
                 st.setInt(1, id);
             }
 

@@ -34,12 +34,12 @@
             <% } %>
 
             <!-- SE FOR UM AUTOR -->
-            <% if (papel == 1) { %>            
+            <% if (papel <= 1) { %>            
             <li class="nav-item">
                 <a class="nav-link" href="./editor.jsp">Criar Postagem</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./gerenciar_artigos.jsp">Minhas Postagens</a>
+                <a class="nav-link" href="./gerenciar_meus_artigos.jsp?area=pessoal">Minhas Postagens</a>
             </li>
             <% } %>            
         </ul>            
