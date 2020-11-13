@@ -42,7 +42,7 @@ public class LoginController extends HttpServlet {
                 String cpf_user = request.getParameter("cpf");
                 String senha_user = request.getParameter("senha");
                 Usuario usuario = usuarioDao.doLogin(cpf_user, senha_user);
-                if (usuario.getId() != 0) {
+                if (usuario != null) {
                     // Cria uma sessao
                     HttpSession session = request.getSession();
                     session.setAttribute("NomeUsuarioLogado", (usuario.getNome().split(" "))[0]);

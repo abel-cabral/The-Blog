@@ -41,13 +41,6 @@ $(document).ready(function () {
     $("#buttaoSalvar").click(function () {
         $("#formNoticia").submit();
     });
-    
-    $("#buttaoPublicar").click(function () {
-        $("#liberar").val("S");        
-        $("#formNoticia").submit();
-    });
-    
-    
 });
 
 
