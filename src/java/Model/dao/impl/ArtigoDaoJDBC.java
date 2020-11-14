@@ -123,10 +123,10 @@ public class ArtigoDaoJDBC implements ArtigoDao {
         try {
             // Se id zero, pega todos os artigos do db
             if (id == 0) {
-                st = conn.prepareStatement("SELECT * FROM artigo INNER JOIN usuario ON artigo.id_usuario = usuario.id");
+                st = conn.prepareStatement("SELECT * FROM artigo INNER JOIN usuario ON artigo.id_usuario = usuario.id ORDER BY artigo.id DESC");
             } else {
                 // Se id direfente de zero, pega só artigos do autor com aquele id 
-                st = conn.prepareStatement("SELECT * FROM artigo INNER JOIN usuario ON artigo.id_usuario = usuario.id WHERE artigo.id_usuario=?");
+                st = conn.prepareStatement("SELECT * FROM artigo INNER JOIN usuario ON artigo.id_usuario = usuario.id WHERE artigo.id_usuario=? ORDER BY artigo.id DESC");
                 st.setInt(1, id);
             }
 

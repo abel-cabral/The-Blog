@@ -17,7 +17,7 @@ public class DB {
         Properties props = new Properties();
         props.put("user", "root");
         props.put("password", "root");
-        String url = "jdbc:mysql://localhost:3306/blog";
+        String url = "jdbc:mysql://localhost:3306/blog?useUnicode=true&amp;characterEncoding=utf8";
         try {
             // load and register JDBC driver for MySQL
             Class.forName("com.mysql.jdbc.Driver"); 

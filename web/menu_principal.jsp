@@ -36,10 +36,10 @@
             <!-- SE FOR UM AUTOR -->
             <% if (papel <= 1) { %>            
             <li class="nav-item">
-                <a class="nav-link" href="./editor.jsp">Criar Postagem</a>
+                <a class="nav-link" href="./editor.jsp">Criar Artigo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./gerenciar_meus_artigos.jsp?area=pessoal">Minhas Postagens</a>
+                <a class="nav-link" href="./gerenciar_meus_artigos.jsp?area=pessoal">Meus Artigos</a>
             </li>
             <% } %>            
         </ul>            

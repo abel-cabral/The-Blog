@@ -23,7 +23,7 @@
                     <div class="col-12">                        
                         <form method="POST" action="ArtigoController" id="formNoticia">
                             <div>
-                                <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite o Título" value="${artigo.titulo}" maxlength="20" autocomplete="off" required="true">
+                                <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite o Título" value="${artigo.titulo}" maxlength="60" autocomplete="off" required="true">
                                 <label class="error" for="titulo"></label>
                             </div>
                             <div>

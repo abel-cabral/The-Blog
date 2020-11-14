@@ -18,6 +18,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
+        request.setCharacterEncoding("UTF-8");
         String RequisicaoTipo = request.getParameter("tipo");
         try {
             if ("novo".equals(RequisicaoTipo)) {
@@ -61,6 +62,7 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(false);
         session.setAttribute("logado", "false");
         response.sendRedirect(request.getContextPath() + "/");

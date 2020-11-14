@@ -20,6 +20,7 @@ public class ArtigoController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String RequisicaoTipo = request.getParameter("tipo");        
         try {
             if (RequisicaoTipo.equals("novo")) {
@@ -74,6 +75,7 @@ public class ArtigoController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         try {
             String id = request.getParameter("id");
             String area = request.getParameter("area");

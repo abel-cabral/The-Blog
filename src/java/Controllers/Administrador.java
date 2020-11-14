@@ -24,6 +24,7 @@ public class Administrador extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(false);
         Integer id = 0;
         try {
@@ -38,6 +39,7 @@ public class Administrador extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String RequisicaoTipo = request.getParameter("tipo");
         try {
             Integer id = Integer.parseInt(request.getParameter("id"));

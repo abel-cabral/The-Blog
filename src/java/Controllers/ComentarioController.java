@@ -18,6 +18,7 @@ public class ComentarioController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String RequisicaoTipo = request.getParameter("tipo");
         try {
             Integer id_artigo = Integer.parseInt(request.getParameter("id_artigo"));
@@ -49,12 +50,13 @@ public class ComentarioController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         try {
-            String id = request.getParameter("id");
+            String id = request.getParameter("id");            
             if (id != null) {
                 Integer aux_id = Integer.parseInt(request.getParameter("id"));
                 List<Comentario> comentarios = comentarioDao.findAllCommentaries(aux_id);
-                request.setAttribute("comentarios", comentarios);
+                request.setAttribute("comentarios", comentarios);                
             } else {
                 response.sendRedirect(request.getContextPath() + "/");
             }
