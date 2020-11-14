@@ -121,7 +121,8 @@ public class UsuarioDaoJDBC implements UsuarioDao {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-            st = conn.prepareStatement("SELECT * FROM usuario where id NOT IN (select id from usuario where id=?)");
+            // Garante que o ADM nunca sera listado por nenhum outro adm, e garante que um adm nao se veja na tabela evitando ser deletado por si proprio.
+            st = conn.prepareStatement("SELECT * FROM usuario where id NOT IN (select id from usuario where id=?) AND NOT id=1");
             st.setInt(1, id);
             rs = st.executeQuery();
 
