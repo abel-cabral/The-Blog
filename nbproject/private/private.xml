@@ -6,9 +6,11 @@
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/editor.jsp</file>
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/src/java/Model/dao/ArtigoDao.java</file>
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/editor.js</file>
+            <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/global.css</file>
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/src/java/Model/dao/impl/ArtigoDaoJDBC.java</file>
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/src/java/Controllers/PublicacaoController.java</file>
             <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/src/java/Controllers/ArtigoController.java</file>
+            <file>file:/D:/Desenvolvimento%20Web/fontesservlet/Blog/web/gerenciar_meus_artigos.jsp</file>
         </group>
     </open-files>
 </project-private>

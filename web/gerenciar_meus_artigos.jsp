@@ -43,13 +43,13 @@
                                                     <input type="hidden" name="id_artigo" value="${artigo.id}">
                                                     <input type="hidden" name="cadastro_liberado" value="S">
                                                     <input type="hidden" name="tipo" value="liberar">
-                                                    <button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Pronto"><i class="fa fa-check"></i></button>
+                                                    <button type="submit" class="btn btn-succes btn-sm" data-toggle="tooltip" data-placement="top" title="Pronto"><i class="fa fa-check"></i></button>
                                                 </form>
-                                                <a href="editor.jsp?artigo=${artigo.id}"><button type="submit" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Editar Publicação"><i class="fa fa-pencil"></i></button></a>
+                                                <a href="editor.jsp?artigo=${artigo.id}"><button type="submit" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Editar Publicação"><i class="fa fa-pencil"></i></button></a>
                                                 <form class="d-inline" action="ArtigoController" method="POST">
                                                     <input type="hidden" name="id_artigo" value="${artigo.id}">                                                    
                                                     <input type="hidden" name="tipo" value="deleteMeu">
-                                                    <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-times-circle"></i></button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-times-circle"></i></button>
                                                 </form>
                                             </td>
                                         </c:if>
@@ -66,12 +66,12 @@
                                                         <input type="hidden" name="id_artigo" value="${artigo.id}">
                                                         <input type="hidden" name="cadastro_liberado" value="N">
                                                         <input type="hidden" name="tipo" value="liberar">
-                                                        <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Interromper Publicação"><i class="fa fa-asterisk"></i></button>
+                                                        <button type="submit" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Interromper Publicação"><i class="fa fa-asterisk"></i></button>
                                                     </form>                                                    
                                                     <form class="d-inline" action="ArtigoController" method="POST">
                                                         <input type="hidden" name="id_artigo" value="${artigo.id}">
                                                         <input type="hidden" name="tipo" value="deleteMeu">
-                                                        <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-times-circle"></i></button>
+                                                        <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-times-circle"></i></button>
                                                     </form>
                                                 </td>
                                             </c:if>

@@ -9,9 +9,8 @@ and open the template in the editor.
 */
 
 body {
-    background-size: cover;    
-    background-image: url("assets/images/background.jpg");
-    background-repeat: no-repeat;
+    background-color: #00171a;
+    background-image: url("assets/images/background.png");   
 }
 
 .container {
