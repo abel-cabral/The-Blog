@@ -42,10 +42,10 @@ public class Administrador extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String RequisicaoTipo = request.getParameter("tipo");
         try {
-            Integer id = Integer.parseInt(request.getParameter("id"));
-            String cadastro_aprovado = request.getParameter("cadastro_aprovado");
+            Integer id = Integer.parseInt(request.getParameter("id"));            
             Usuario usuario = usuarioDao.findById(id);
             if (RequisicaoTipo.equals("update")) {
+                String cadastro_aprovado = request.getParameter("cadastro_aprovado");
                 usuario.setCadastro_aprovado(cadastro_aprovado);
                 usuarioDao.update(usuario);
             } else if (RequisicaoTipo.equals("delete")) {

@@ -24,7 +24,14 @@
             <li class="nav-item active">
                 <a class="nav-link" href="./index.jsp">Home<span class="sr-only">(current)</span></a>
             </li>
-
+            <% if (status == true) {%> 
+            <% if ("N".equals(cadastro_aprovado)) {%>
+            </ul> 
+            <small class="text-light">Aguardando Aprovação, <b><%=usuario%></b></small>
+            <form name="logout" action="VerificarLogin" method="get">
+                <a class="nav-link" onclick="callservlet()" href="#">Sair</a>
+            </form>    
+            <% } else { %>
             <!-- SE FOR UM ADMINISTRADOR-->
             <% if (papel == 0) { %>            
             <li class="nav-item">
@@ -43,27 +50,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="./gerenciar_meus_artigos.jsp?area=pessoal">Meus Artigos</a>
             </li>
-            <% } %>            
-        </ul>        
-        <!-- VERIFICA SE ESTA LOGADO OU NAO -->
-        <% if (status == true) {%>
-        
-        <% if ("N".equals(cadastro_aprovado)) { %>                    
-        <small class="text-light">Aguardando Aprovação, <b><%=usuario%></b></small>
-        <%
-        } else {
-        %>
-        <small class="text-light">Bem-vindo, <b><%=usuario%></b></small>
-        <% } %>
-        
-        <form name="logout" action="VerificarLogin" method="get">
-            <a class="nav-link" onclick="callservlet()" href="#">Sair</a>
-        </form>        
-        <%
-        } else {
-        %>
-        <a class="nav-link" href="login.jsp">Entrar</a>
-        <% }%>
+            <% }%> 
+            </ul> 
+            <small class="text-light">Bem-vindo, <b><%=usuario%></b></small>
+            <form name="logout" action="VerificarLogin" method="get">
+                <a class="nav-link" onclick="callservlet()" href="#">Sair</a>
+            </form>      
+            <% } %>
+            <% } else { %>
+            </ul> 
+            <a class="nav-link" href="login.jsp">Entrar</a>
+            <% }%>        
     </div>
 </nav>
 <script>
