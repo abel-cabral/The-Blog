@@ -3,15 +3,17 @@
     Integer papel = 100;
     Boolean status = false;
     String usuario = "";
+    String cadastro_aprovado = "N";
     try {
         papel = Integer.parseInt((String) session.getAttribute("papel"));
         status = Boolean.parseBoolean((String) session.getAttribute("logado"));
         usuario = (String) session.getAttribute("NomeUsuarioLogado");
+        cadastro_aprovado = (String) session.getAttribute("cadastro_aprovado");
     } catch (Exception e) {
         System.out.println(e.getMessage());
     }
 %>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">    
     <a class="navbar-brand" href="./index.jsp">Blog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,13 +44,21 @@
                 <a class="nav-link" href="./gerenciar_meus_artigos.jsp?area=pessoal">Meus Artigos</a>
             </li>
             <% } %>            
-        </ul>            
+        </ul>        
         <!-- VERIFICA SE ESTA LOGADO OU NAO -->
-        <% if (status == true) { %>            
+        <% if (status == true) {%>
+        
+        <% if ("N".equals(cadastro_aprovado)) { %>                    
+        <small class="text-light">Aguardando Aprovação, <b><%=usuario%></b></small>
+        <%
+        } else {
+        %>
         <small class="text-light">Bem-vindo, <b><%=usuario%></b></small>
+        <% } %>
+        
         <form name="logout" action="VerificarLogin" method="get">
             <a class="nav-link" onclick="callservlet()" href="#">Sair</a>
-        </form>
+        </form>        
         <%
         } else {
         %>

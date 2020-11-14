@@ -87,6 +87,7 @@
                     </div> 
                 </c:forEach>
                 <% if ("true".equals(session.getAttribute("logado"))) {%> 
+                <% if ("S".equals(session.getAttribute("cadastro_aprovado"))) {%> 
                 <form method="POST" action="ComentarioController">                            
                     <% if (session.getAttribute("papel").equals("2") || session.getAttribute("papel").equals("0")) {%>
                     <div class="m-2 pl-2 pr-2 form-group">
@@ -101,6 +102,7 @@
                     </div>
                     <% }%>
                 </form>
+                <% }%>
                 <% }%>
             </section>
         </div>

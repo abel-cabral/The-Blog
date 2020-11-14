@@ -38,6 +38,7 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("papel", usuario.getPapel().toString());
                 session.setAttribute("id", usuario.getId().toString());
                 session.setAttribute("logado", "true");
+                session.setAttribute("cadastro_aprovado", usuario.getCadastro_aprovado());                
                 response.sendRedirect(request.getContextPath() + "/");
             } else {
                 String cpf_user = request.getParameter("cpf");
@@ -50,6 +51,7 @@ public class LoginController extends HttpServlet {
                     session.setAttribute("papel", usuario.getPapel().toString());
                     session.setAttribute("id", usuario.getId().toString());
                     session.setAttribute("logado", "true");
+                    session.setAttribute("cadastro_aprovado", usuario.getCadastro_aprovado()); 
                     response.sendRedirect(request.getContextPath() + "/");
                 } else {
                     response.sendRedirect(request.getContextPath() + "/login.jsp");
