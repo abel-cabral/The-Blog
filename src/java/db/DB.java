@@ -16,7 +16,7 @@ public class DB {
     public static Connection getConnection() throws ClassNotFoundException {
         Properties props = new Properties();
         props.put("user", "root");
-        props.put("password", "root");
+        props.put("password", "");
         String url = "jdbc:mysql://localhost:3306/blog?useUnicode=true&amp;characterEncoding=utf8";
         try {
             // load and register JDBC driver for MySQL

@@ -21,9 +21,10 @@
                                         </div>                                     
                                         <input type="text" name="cpf" id="cpf" class="form-control cpf" placeholder="Digite o CPF" maxlength="14" data-mask="000.000.000-00" autocomplete="off" required="true">
                                     </div>
-                                    <label class="error" for="cpf"></label>
+                                    
                                 </div>
                             </div>
+                            <br>
                             <div class="form-group row">
                                 <div class="col-12">
                                     <div class="input-group">
@@ -34,7 +35,7 @@
                                         </div>                                     
                                         <input type="password" class="form-control" name="senha" id="senha" placeholder="Digite a senha" autocomplete="off" required="true">
                                     </div>
-                                    <label class="error" for="senha"></label>
+                                    
                                 </div>
                             </div>                                           
                             <a href="./register.jsp">Criar Conta</a>
