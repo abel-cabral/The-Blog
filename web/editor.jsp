@@ -1,4 +1,4 @@
-
+<jsp:include page="./guards/autor.jsp" />
 <jsp:include page="/PublicacaoController" />
 <jsp:include page="/ArtigoController" />
 

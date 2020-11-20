@@ -7,82 +7,49 @@
         <link rel="stylesheet" href="./register.css">        
     </head>
     <body class="h-100">
-        <div class="vertical-center">
-            <div class="container">                
-                <div class="row mb-3 mt-5">
-                    <div class="col-4 offset-4 card bg-ligth">
-                        <h1>THE BLOG</h1>
-                        <form id="formCadastro" method="POST" action="VerificarLogin" class="mb-3 mt-3">
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fa fa-user-circle-o"></i>
-                                            </div>
-                                        </div> 
-                                        <input id="nome" name="nome" placeholder="Nome do usuário" type="text" required="required" class="form-control">
-                                    </div>
-                                    <label class="error" for="nome"></label>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card card-signin my-5">
+                        <div class="card-body">
+                            <h1 class="card-title text-center">THE BLOG</h1>
+                            <form id="formCadastro" method="POST" action="VerificarLogin" class="form-signin">
+                                <div class="form-label-group">
+                                    <label for="inputEmail">Nome</label>
+                                    <input id="nome" name="nome" placeholder="Nome do usuário" type="text" required="required" class="form-control">
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fa fa-envelope"></i>
-                                            </div>
-                                        </div> 
-                                        <input id="email" name="email" placeholder="Email do usuário" type="text" class="form-control" required="required">
-                                    </div>
-                                    <label class="error" for="email"></label>
+
+                                <div class="form-label-group">
+                                    <label for="inputPassword">Email</label>
+                                    <input id="email" name="email" placeholder="Email do usuário" type="text" class="form-control" required="required">
                                 </div>
-                            </div>
-                            <div class="form-group row">                           
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fa fa-address-card"></i>
-                                            </div>
-                                        </div> 
-                                        <input id="cpf" name="cpf" placeholder="Cpf do usuário" type="text" class="form-control" data-mask="000.000.000-00" required="required">
-                                    </div>
-                                    <label class="error" for="cpf"></label>
+
+                                <div class="form-label-group">
+                                    <label for="inputPassword">CPF</label>
+                                    <input id="cpf" name="cpf" placeholder="Cpf do usuário" type="text" class="form-control" data-mask="000.000.000-00" required="required">
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fa fa-lock"></i>
-                                            </div>
-                                        </div> 
-                                        <input type="password" id="senha" name="senha" placeholder="Senha do usuário" type="text" class="form-control" required="required">
-                                    </div>
-                                    <label class="error" for="senha"></label>
+
+                                <div class="form-label-group">
+                                    <label for="inputPassword">Senha</label>
+                                    <input type="password" id="senha" name="senha" placeholder="Senha do usuário" type="text" class="form-control" required="required">                                   
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <span id="papelHelpBlock" class="form-text text-muted">Papel do usuário no sistema</span>
+
+                                <div class="form-label-group">
+                                    <label for="inputPassword">Papel no sistema</label>
                                     <select id="papel" name="papel" class="custom-select" aria-describedby="papelHelpBlock" required="required">
                                         <option value="">Selecione</option>
                                         <option value="0">Administrador</option>
                                         <option value="1">Autor</option>
                                         <option value="2">Comentárista</option>
-                                    </select>   
-                                    <label class="error" for="papel"></label>
+                                    </select>                                      
                                 </div>
-                            </div>
-                            <a href="./login.jsp">Possui uma conta?</a>
-                            <div class="form-group mb-2">
+                                <br>          
                                 <input type="hidden" name="tipo" value="novo">
-                                <button type="submit" class="btn btn-outline-dark mr-2">Cadastrar</button>
-                            </div>                        
-                        </form>                
+                                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Cadastrar</button>
+                                <hr class="my-4">                                
+                                <button class="btn btn-lg btn-google btn-block text-uppercase" type="button" onclick="location.href = 'login.jsp';">Já tem conta?</button>                                
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
