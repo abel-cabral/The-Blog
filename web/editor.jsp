@@ -1,4 +1,4 @@
-<jsp:include page="/SecurityController" />
+
 <jsp:include page="/PublicacaoController" />
 <jsp:include page="/ArtigoController" />
 
